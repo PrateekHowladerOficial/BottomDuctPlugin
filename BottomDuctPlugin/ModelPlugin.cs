@@ -1700,8 +1700,6 @@ namespace BottomDuctPlugin
             }
             
         }
-   
-
         private ControlArc ArcFormation(Point startPoint1, Point endPoint1, Point centerPoint1, double radius, double angle, int i)
         {
             ControlPoint cp1 = new ControlPoint(new Point(centerPoint1.X + radius * Math.Cos(0.5 * i * angle), centerPoint1.Y + radius * Math.Sin(0.5 * i * angle), startPoint1.Z));
@@ -1714,7 +1712,6 @@ namespace BottomDuctPlugin
            
             return controlArc1;
         }
-        
         private LoftedPlate CreateConicalRing(ControlArc arc1, ControlArc arc2)
         {
             var bottomArc = new Arc(new Point(arc1.Geometry.StartPoint), new Point(arc1.Geometry.EndPoint), new Point(arc1.Geometry.ArcMiddlePoint));
