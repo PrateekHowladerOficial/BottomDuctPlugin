@@ -79,5 +79,10 @@ namespace BottomDuctPlugin
             comboBox_ChimnyLayout.SelectedIndex = 1;
 
         }
+
+        private void label_ThkofRing_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
