@@ -704,7 +704,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeName(this.LeftStiffnerOffset, "LeftStiffnerOffset");
             this.structuresExtender.SetAttributeTypeName(this.LeftStiffnerOffset, "Distance");
             this.structuresExtender.SetBindPropertyName(this.LeftStiffnerOffset, null);
-            this.LeftStiffnerOffset.Location = new System.Drawing.Point(115, 468);
+            this.LeftStiffnerOffset.Location = new System.Drawing.Point(114, 486);
             this.LeftStiffnerOffset.Name = "LeftStiffnerOffset";
             this.LeftStiffnerOffset.Size = new System.Drawing.Size(100, 22);
             this.LeftStiffnerOffset.TabIndex = 20;
@@ -866,7 +866,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_MaterialChinmy, null);
             this.label_MaterialChinmy.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_MaterialChinmy, null);
-            this.label_MaterialChinmy.Location = new System.Drawing.Point(148, 492);
+            this.label_MaterialChinmy.Location = new System.Drawing.Point(126, 488);
             this.label_MaterialChinmy.Name = "label_MaterialChinmy";
             this.label_MaterialChinmy.Size = new System.Drawing.Size(58, 16);
             this.label_MaterialChinmy.TabIndex = 38;
@@ -908,7 +908,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_RadiusofTopRing, null);
             this.label_RadiusofTopRing.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_RadiusofTopRing, null);
-            this.label_RadiusofTopRing.Location = new System.Drawing.Point(135, 169);
+            this.label_RadiusofTopRing.Location = new System.Drawing.Point(126, 169);
             this.label_RadiusofTopRing.Name = "label_RadiusofTopRing";
             this.label_RadiusofTopRing.Size = new System.Drawing.Size(135, 16);
             this.label_RadiusofTopRing.TabIndex = 34;
@@ -927,7 +927,7 @@ namespace BottomDuctPlugin
             // textBoxPltThkcon
             // 
             this.structuresExtender.SetAttributeName(this.textBoxPltThkcon, "PltThkCon");
-            this.structuresExtender.SetAttributeTypeName(this.textBoxPltThkcon, "String");
+            this.structuresExtender.SetAttributeTypeName(this.textBoxPltThkcon, "Distance");
             this.structuresExtender.SetBindPropertyName(this.textBoxPltThkcon, null);
             this.textBoxPltThkcon.Location = new System.Drawing.Point(304, 346);
             this.textBoxPltThkcon.Name = "textBoxPltThkcon";
@@ -972,7 +972,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_FinishChinmy, null);
             this.label_FinishChinmy.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_FinishChinmy, null);
-            this.label_FinishChinmy.Location = new System.Drawing.Point(157, 441);
+            this.label_FinishChinmy.Location = new System.Drawing.Point(126, 438);
             this.label_FinishChinmy.Name = "label_FinishChinmy";
             this.label_FinishChinmy.Size = new System.Drawing.Size(42, 16);
             this.label_FinishChinmy.TabIndex = 25;
@@ -984,7 +984,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_NoofSegments, null);
             this.label_NoofSegments.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_NoofSegments, null);
-            this.label_NoofSegments.Location = new System.Drawing.Point(146, 394);
+            this.label_NoofSegments.Location = new System.Drawing.Point(126, 397);
             this.label_NoofSegments.Name = "label_NoofSegments";
             this.label_NoofSegments.Size = new System.Drawing.Size(106, 16);
             this.label_NoofSegments.TabIndex = 24;
@@ -996,11 +996,12 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_ThkofRing, null);
             this.label_ThkofRing.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_ThkofRing, null);
-            this.label_ThkofRing.Location = new System.Drawing.Point(157, 349);
+            this.label_ThkofRing.Location = new System.Drawing.Point(126, 349);
             this.label_ThkofRing.Name = "label_ThkofRing";
             this.label_ThkofRing.Size = new System.Drawing.Size(75, 16);
             this.label_ThkofRing.TabIndex = 26;
             this.label_ThkofRing.Text = "Thk of Ring";
+            this.label_ThkofRing.Click += new System.EventHandler(this.label_ThkofRing_Click);
             // 
             // label_NoofRings
             // 
@@ -1008,7 +1009,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_NoofRings, null);
             this.label_NoofRings.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_NoofRings, null);
-            this.label_NoofRings.Location = new System.Drawing.Point(157, 302);
+            this.label_NoofRings.Location = new System.Drawing.Point(126, 302);
             this.label_NoofRings.Name = "label_NoofRings";
             this.label_NoofRings.Size = new System.Drawing.Size(80, 16);
             this.label_NoofRings.TabIndex = 27;
@@ -1020,7 +1021,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_RadiusofBottomRing, null);
             this.label_RadiusofBottomRing.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_RadiusofBottomRing, null);
-            this.label_RadiusofBottomRing.Location = new System.Drawing.Point(135, 210);
+            this.label_RadiusofBottomRing.Location = new System.Drawing.Point(126, 210);
             this.label_RadiusofBottomRing.Name = "label_RadiusofBottomRing";
             this.label_RadiusofBottomRing.Size = new System.Drawing.Size(152, 16);
             this.label_RadiusofBottomRing.TabIndex = 28;

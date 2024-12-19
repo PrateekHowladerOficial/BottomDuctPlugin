@@ -390,11 +390,11 @@ namespace BottomDuctPlugin
 
 
             if (IsDefaultValue(_Thickness))
-                _Thickness = 4;
+                _Thickness = 20;
             if (IsDefaultValue(_TopDuctLength))
                 _TopDuctLength = 6000;
             if (IsDefaultValue(_TopDuctHight))
-                _TopDuctHight = 2000;
+                _TopDuctHight = 3000;
             if (IsDefaultValue(_TopDuctWidth))
                 _TopDuctWidth = 8000;
             if (IsDefaultValue(_TopXOffset))
@@ -404,7 +404,7 @@ namespace BottomDuctPlugin
             if (IsDefaultValue(_CenterDuctHight))
                 _CenterDuctHight = 10000;
             if (IsDefaultValue(_CenterDuctWidth))
-                _CenterDuctWidth = 10000;
+                _CenterDuctWidth = 9000;
             if (IsDefaultValue(_CenterDuctLength))
                 _CenterDuctLength = 10000;
             if (IsDefaultValue(_RightDuctDiamete))
@@ -428,7 +428,7 @@ namespace BottomDuctPlugin
             if (IsDefaultValue(_LeftDuctRim))
                 _LeftDuctRim = 500;
             if (IsDefaultValue(_LeftVerticalOffset))
-                _LeftVerticalOffset = 3000;
+                _LeftVerticalOffset = 2000;
             if (IsDefaultValue(_LeftHorizontalOffset))
                 _LeftHorizontalOffset = 0;
             if (IsDefaultValue(_CenterStiffnerCount))
@@ -462,7 +462,7 @@ namespace BottomDuctPlugin
 
             if (IsDefaultValue(_TopDiaC))
             {
-                _TopDiaC = 10000;
+                _TopDiaC = 8000;
             }
             if (IsDefaultValue(_LenShell))
             {
