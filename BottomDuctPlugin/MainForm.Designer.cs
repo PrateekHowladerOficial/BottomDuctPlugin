@@ -33,6 +33,9 @@ namespace BottomDuctPlugin
             this.saveLoad = new Tekla.Structures.Dialog.UIControls.SaveLoad();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.ParametersTabPage = new System.Windows.Forms.TabPage();
+            this.checkBox_TopDuctHight = new System.Windows.Forms.CheckBox();
+            this.checkBox_TopDuctLength = new System.Windows.Forms.CheckBox();
+            this.checkBox_TopDuctWidth = new System.Windows.Forms.CheckBox();
             this.LeftHorizontalOffset = new System.Windows.Forms.TextBox();
             this.label_TopXOffset = new System.Windows.Forms.Label();
             this.TopXOffset = new System.Windows.Forms.TextBox();
@@ -105,6 +108,21 @@ namespace BottomDuctPlugin
             this.label_ThkofRing = new System.Windows.Forms.Label();
             this.label_NoofRings = new System.Windows.Forms.Label();
             this.label_RadiusofBottomRing = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label_StudDiameter = new System.Windows.Forms.Label();
+            this.StudDiameter = new System.Windows.Forms.TextBox();
+            this.label_PlateMaterial = new System.Windows.Forms.Label();
+            this.PlateMaterial = new System.Windows.Forms.TextBox();
+            this.label_StudMaterial = new System.Windows.Forms.Label();
+            this.StudMaterial = new System.Windows.Forms.TextBox();
+            this.label_InnerPlateThickness = new System.Windows.Forms.Label();
+            this.InnerPlateThickness = new System.Windows.Forms.TextBox();
+            this.label_StudLength = new System.Windows.Forms.Label();
+            this.StudLength = new System.Windows.Forms.TextBox();
+            this.label_VirtialDistanceStuds = new System.Windows.Forms.Label();
+            this.VirtialDistancebetwStuds = new System.Windows.Forms.TextBox();
+            this.label_NoOfStuds = new System.Windows.Forms.Label();
+            this.NoOfStuds = new System.Windows.Forms.TextBox();
             this.okApplyModifyGetOnOffCancel1 = new Tekla.Structures.Dialog.UIControls.OkApplyModifyGetOnOffCancel();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -115,6 +133,7 @@ namespace BottomDuctPlugin
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Stiffner)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChimnyPictureBox)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.tableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -145,6 +164,7 @@ namespace BottomDuctPlugin
             this.tabControl.Controls.Add(this.ParametersTabPage);
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.tabPage3);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(4, 67);
             this.tabControl.Margin = new System.Windows.Forms.Padding(4);
@@ -158,6 +178,9 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeName(this.ParametersTabPage, null);
             this.structuresExtender.SetAttributeTypeName(this.ParametersTabPage, null);
             this.structuresExtender.SetBindPropertyName(this.ParametersTabPage, null);
+            this.ParametersTabPage.Controls.Add(this.checkBox_TopDuctHight);
+            this.ParametersTabPage.Controls.Add(this.checkBox_TopDuctLength);
+            this.ParametersTabPage.Controls.Add(this.checkBox_TopDuctWidth);
             this.ParametersTabPage.Controls.Add(this.LeftHorizontalOffset);
             this.ParametersTabPage.Controls.Add(this.label_TopXOffset);
             this.ParametersTabPage.Controls.Add(this.TopXOffset);
@@ -199,6 +222,42 @@ namespace BottomDuctPlugin
             this.ParametersTabPage.TabIndex = 2;
             this.ParametersTabPage.Text = "Layout";
             this.ParametersTabPage.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_TopDuctHight
+            // 
+            this.structuresExtender.SetAttributeName(this.checkBox_TopDuctHight, null);
+            this.structuresExtender.SetAttributeTypeName(this.checkBox_TopDuctHight, "Boolean");
+            this.checkBox_TopDuctHight.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.checkBox_TopDuctHight, "TopDuctHight");
+            this.checkBox_TopDuctHight.Location = new System.Drawing.Point(606, 117);
+            this.checkBox_TopDuctHight.Name = "checkBox_TopDuctHight";
+            this.checkBox_TopDuctHight.Size = new System.Drawing.Size(18, 17);
+            this.checkBox_TopDuctHight.TabIndex = 75;
+            this.checkBox_TopDuctHight.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_TopDuctLength
+            // 
+            this.structuresExtender.SetAttributeName(this.checkBox_TopDuctLength, null);
+            this.structuresExtender.SetAttributeTypeName(this.checkBox_TopDuctLength, "Boolean");
+            this.checkBox_TopDuctLength.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.checkBox_TopDuctLength, "TopDuctLength");
+            this.checkBox_TopDuctLength.Location = new System.Drawing.Point(459, 85);
+            this.checkBox_TopDuctLength.Name = "checkBox_TopDuctLength";
+            this.checkBox_TopDuctLength.Size = new System.Drawing.Size(18, 17);
+            this.checkBox_TopDuctLength.TabIndex = 74;
+            this.checkBox_TopDuctLength.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_TopDuctWidth
+            // 
+            this.structuresExtender.SetAttributeName(this.checkBox_TopDuctWidth, null);
+            this.structuresExtender.SetAttributeTypeName(this.checkBox_TopDuctWidth, "Boolean");
+            this.checkBox_TopDuctWidth.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.checkBox_TopDuctWidth, "TopDuctWidth");
+            this.checkBox_TopDuctWidth.Location = new System.Drawing.Point(459, 56);
+            this.checkBox_TopDuctWidth.Name = "checkBox_TopDuctWidth";
+            this.checkBox_TopDuctWidth.Size = new System.Drawing.Size(18, 17);
+            this.checkBox_TopDuctWidth.TabIndex = 73;
+            this.checkBox_TopDuctWidth.UseVisualStyleBackColor = true;
             // 
             // LeftHorizontalOffset
             // 
@@ -764,7 +823,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeName(this.TopCapDiameter, "TopCapDiameter");
             this.structuresExtender.SetAttributeTypeName(this.TopCapDiameter, "Distance");
             this.structuresExtender.SetBindPropertyName(this.TopCapDiameter, null);
-            this.TopCapDiameter.Location = new System.Drawing.Point(304, 210);
+            this.TopCapDiameter.Location = new System.Drawing.Point(303, 143);
             this.TopCapDiameter.Name = "TopCapDiameter";
             this.TopCapDiameter.Size = new System.Drawing.Size(100, 22);
             this.TopCapDiameter.TabIndex = 47;
@@ -841,7 +900,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.comboBox_ChimnyLayout, "Integer");
             this.structuresExtender.SetBindPropertyName(this.comboBox_ChimnyLayout, null);
             this.comboBox_ChimnyLayout.FormattingEnabled = true;
-            this.comboBox_ChimnyLayout.Location = new System.Drawing.Point(445, 109);
+            this.comboBox_ChimnyLayout.Location = new System.Drawing.Point(560, 459);
             this.comboBox_ChimnyLayout.Name = "comboBox_ChimnyLayout";
             this.comboBox_ChimnyLayout.Size = new System.Drawing.Size(121, 24);
             this.comboBox_ChimnyLayout.TabIndex = 40;
@@ -853,7 +912,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.ChimnyPictureBox, null);
             this.ChimnyPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.structuresExtender.SetBindPropertyName(this.ChimnyPictureBox, null);
-            this.ChimnyPictureBox.Location = new System.Drawing.Point(445, 166);
+            this.ChimnyPictureBox.Location = new System.Drawing.Point(475, 114);
             this.ChimnyPictureBox.Name = "ChimnyPictureBox";
             this.ChimnyPictureBox.Size = new System.Drawing.Size(306, 326);
             this.ChimnyPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -866,7 +925,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_MaterialChinmy, null);
             this.label_MaterialChinmy.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_MaterialChinmy, null);
-            this.label_MaterialChinmy.Location = new System.Drawing.Point(126, 488);
+            this.label_MaterialChinmy.Location = new System.Drawing.Point(125, 421);
             this.label_MaterialChinmy.Name = "label_MaterialChinmy";
             this.label_MaterialChinmy.Size = new System.Drawing.Size(58, 16);
             this.label_MaterialChinmy.TabIndex = 38;
@@ -877,7 +936,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeName(this.textBoxMtlCon, "MtlCon");
             this.structuresExtender.SetAttributeTypeName(this.textBoxMtlCon, "String");
             this.structuresExtender.SetBindPropertyName(this.textBoxMtlCon, null);
-            this.textBoxMtlCon.Location = new System.Drawing.Point(304, 485);
+            this.textBoxMtlCon.Location = new System.Drawing.Point(303, 418);
             this.textBoxMtlCon.Name = "textBoxMtlCon";
             this.textBoxMtlCon.Size = new System.Drawing.Size(100, 22);
             this.textBoxMtlCon.TabIndex = 37;
@@ -887,7 +946,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeName(this.textBoxFinishCon, "FnCon");
             this.structuresExtender.SetAttributeTypeName(this.textBoxFinishCon, "String");
             this.structuresExtender.SetBindPropertyName(this.textBoxFinishCon, null);
-            this.textBoxFinishCon.Location = new System.Drawing.Point(304, 435);
+            this.textBoxFinishCon.Location = new System.Drawing.Point(303, 368);
             this.textBoxFinishCon.Name = "textBoxFinishCon";
             this.textBoxFinishCon.Size = new System.Drawing.Size(100, 22);
             this.textBoxFinishCon.TabIndex = 36;
@@ -897,7 +956,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeName(this.textBoxTopRadiusChinmy, "TpRadC");
             this.structuresExtender.SetAttributeTypeName(this.textBoxTopRadiusChinmy, "Distance");
             this.structuresExtender.SetBindPropertyName(this.textBoxTopRadiusChinmy, null);
-            this.textBoxTopRadiusChinmy.Location = new System.Drawing.Point(304, 166);
+            this.textBoxTopRadiusChinmy.Location = new System.Drawing.Point(303, 99);
             this.textBoxTopRadiusChinmy.Name = "textBoxTopRadiusChinmy";
             this.textBoxTopRadiusChinmy.Size = new System.Drawing.Size(100, 22);
             this.textBoxTopRadiusChinmy.TabIndex = 35;
@@ -908,7 +967,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_RadiusofTopRing, null);
             this.label_RadiusofTopRing.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_RadiusofTopRing, null);
-            this.label_RadiusofTopRing.Location = new System.Drawing.Point(126, 169);
+            this.label_RadiusofTopRing.Location = new System.Drawing.Point(125, 102);
             this.label_RadiusofTopRing.Name = "label_RadiusofTopRing";
             this.label_RadiusofTopRing.Size = new System.Drawing.Size(135, 16);
             this.label_RadiusofTopRing.TabIndex = 34;
@@ -919,7 +978,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeName(this.textBoxsegmentcon, "SegCon");
             this.structuresExtender.SetAttributeTypeName(this.textBoxsegmentcon, "Integer");
             this.structuresExtender.SetBindPropertyName(this.textBoxsegmentcon, null);
-            this.textBoxsegmentcon.Location = new System.Drawing.Point(304, 394);
+            this.textBoxsegmentcon.Location = new System.Drawing.Point(303, 327);
             this.textBoxsegmentcon.Name = "textBoxsegmentcon";
             this.textBoxsegmentcon.Size = new System.Drawing.Size(100, 22);
             this.textBoxsegmentcon.TabIndex = 33;
@@ -927,9 +986,9 @@ namespace BottomDuctPlugin
             // textBoxPltThkcon
             // 
             this.structuresExtender.SetAttributeName(this.textBoxPltThkcon, "PltThkCon");
-            this.structuresExtender.SetAttributeTypeName(this.textBoxPltThkcon, "String");
+            this.structuresExtender.SetAttributeTypeName(this.textBoxPltThkcon, "Distance");
             this.structuresExtender.SetBindPropertyName(this.textBoxPltThkcon, null);
-            this.textBoxPltThkcon.Location = new System.Drawing.Point(304, 346);
+            this.textBoxPltThkcon.Location = new System.Drawing.Point(303, 279);
             this.textBoxPltThkcon.Name = "textBoxPltThkcon";
             this.textBoxPltThkcon.Size = new System.Drawing.Size(100, 22);
             this.textBoxPltThkcon.TabIndex = 32;
@@ -939,7 +998,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeName(this.textBoxRingQtycon, "QtyCon");
             this.structuresExtender.SetAttributeTypeName(this.textBoxRingQtycon, "Integer");
             this.structuresExtender.SetBindPropertyName(this.textBoxRingQtycon, null);
-            this.textBoxRingQtycon.Location = new System.Drawing.Point(304, 302);
+            this.textBoxRingQtycon.Location = new System.Drawing.Point(303, 235);
             this.textBoxRingQtycon.Name = "textBoxRingQtycon";
             this.textBoxRingQtycon.Size = new System.Drawing.Size(100, 22);
             this.textBoxRingQtycon.TabIndex = 31;
@@ -949,7 +1008,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeName(this.textBoxlengthCon, "LenShell");
             this.structuresExtender.SetAttributeTypeName(this.textBoxlengthCon, "Distance");
             this.structuresExtender.SetBindPropertyName(this.textBoxlengthCon, null);
-            this.textBoxlengthCon.Location = new System.Drawing.Point(304, 251);
+            this.textBoxlengthCon.Location = new System.Drawing.Point(303, 184);
             this.textBoxlengthCon.Name = "textBoxlengthCon";
             this.textBoxlengthCon.Size = new System.Drawing.Size(100, 22);
             this.textBoxlengthCon.TabIndex = 30;
@@ -960,7 +1019,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_TotalVertiHeightofShell, null);
             this.label_TotalVertiHeightofShell.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_TotalVertiHeightofShell, null);
-            this.label_TotalVertiHeightofShell.Location = new System.Drawing.Point(126, 257);
+            this.label_TotalVertiHeightofShell.Location = new System.Drawing.Point(125, 190);
             this.label_TotalVertiHeightofShell.Name = "label_TotalVertiHeightofShell";
             this.label_TotalVertiHeightofShell.Size = new System.Drawing.Size(157, 16);
             this.label_TotalVertiHeightofShell.TabIndex = 23;
@@ -972,7 +1031,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_FinishChinmy, null);
             this.label_FinishChinmy.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_FinishChinmy, null);
-            this.label_FinishChinmy.Location = new System.Drawing.Point(126, 438);
+            this.label_FinishChinmy.Location = new System.Drawing.Point(125, 371);
             this.label_FinishChinmy.Name = "label_FinishChinmy";
             this.label_FinishChinmy.Size = new System.Drawing.Size(42, 16);
             this.label_FinishChinmy.TabIndex = 25;
@@ -984,7 +1043,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_NoofSegments, null);
             this.label_NoofSegments.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_NoofSegments, null);
-            this.label_NoofSegments.Location = new System.Drawing.Point(126, 397);
+            this.label_NoofSegments.Location = new System.Drawing.Point(125, 330);
             this.label_NoofSegments.Name = "label_NoofSegments";
             this.label_NoofSegments.Size = new System.Drawing.Size(106, 16);
             this.label_NoofSegments.TabIndex = 24;
@@ -996,7 +1055,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_ThkofRing, null);
             this.label_ThkofRing.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_ThkofRing, null);
-            this.label_ThkofRing.Location = new System.Drawing.Point(126, 349);
+            this.label_ThkofRing.Location = new System.Drawing.Point(125, 282);
             this.label_ThkofRing.Name = "label_ThkofRing";
             this.label_ThkofRing.Size = new System.Drawing.Size(75, 16);
             this.label_ThkofRing.TabIndex = 26;
@@ -1009,7 +1068,7 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_NoofRings, null);
             this.label_NoofRings.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_NoofRings, null);
-            this.label_NoofRings.Location = new System.Drawing.Point(126, 302);
+            this.label_NoofRings.Location = new System.Drawing.Point(125, 235);
             this.label_NoofRings.Name = "label_NoofRings";
             this.label_NoofRings.Size = new System.Drawing.Size(80, 16);
             this.label_NoofRings.TabIndex = 27;
@@ -1021,11 +1080,192 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_RadiusofBottomRing, null);
             this.label_RadiusofBottomRing.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_RadiusofBottomRing, null);
-            this.label_RadiusofBottomRing.Location = new System.Drawing.Point(126, 210);
+            this.label_RadiusofBottomRing.Location = new System.Drawing.Point(125, 143);
             this.label_RadiusofBottomRing.Name = "label_RadiusofBottomRing";
             this.label_RadiusofBottomRing.Size = new System.Drawing.Size(152, 16);
             this.label_RadiusofBottomRing.TabIndex = 28;
             this.label_RadiusofBottomRing.Text = "Diameter of Bottom Ring";
+            // 
+            // tabPage3
+            // 
+            this.structuresExtender.SetAttributeName(this.tabPage3, null);
+            this.structuresExtender.SetAttributeTypeName(this.tabPage3, null);
+            this.structuresExtender.SetBindPropertyName(this.tabPage3, null);
+            this.tabPage3.Controls.Add(this.label_StudDiameter);
+            this.tabPage3.Controls.Add(this.StudDiameter);
+            this.tabPage3.Controls.Add(this.label_PlateMaterial);
+            this.tabPage3.Controls.Add(this.PlateMaterial);
+            this.tabPage3.Controls.Add(this.label_StudMaterial);
+            this.tabPage3.Controls.Add(this.StudMaterial);
+            this.tabPage3.Controls.Add(this.label_InnerPlateThickness);
+            this.tabPage3.Controls.Add(this.InnerPlateThickness);
+            this.tabPage3.Controls.Add(this.label_StudLength);
+            this.tabPage3.Controls.Add(this.StudLength);
+            this.tabPage3.Controls.Add(this.label_VirtialDistanceStuds);
+            this.tabPage3.Controls.Add(this.VirtialDistancebetwStuds);
+            this.tabPage3.Controls.Add(this.label_NoOfStuds);
+            this.tabPage3.Controls.Add(this.NoOfStuds);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(914, 600);
+            this.tabPage3.TabIndex = 5;
+            this.tabPage3.Text = "Insolation for Chinmy";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label_StudDiameter
+            // 
+            this.structuresExtender.SetAttributeName(this.label_StudDiameter, null);
+            this.structuresExtender.SetAttributeTypeName(this.label_StudDiameter, null);
+            this.label_StudDiameter.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label_StudDiameter, null);
+            this.label_StudDiameter.Location = new System.Drawing.Point(121, 43);
+            this.label_StudDiameter.Name = "label_StudDiameter";
+            this.label_StudDiameter.Size = new System.Drawing.Size(92, 16);
+            this.label_StudDiameter.TabIndex = 13;
+            this.label_StudDiameter.Text = "Stud Diameter";
+            // 
+            // StudDiameter
+            // 
+            this.structuresExtender.SetAttributeName(this.StudDiameter, "StudDiameter");
+            this.structuresExtender.SetAttributeTypeName(this.StudDiameter, "Distance");
+            this.structuresExtender.SetBindPropertyName(this.StudDiameter, null);
+            this.StudDiameter.Location = new System.Drawing.Point(124, 62);
+            this.StudDiameter.Name = "StudDiameter";
+            this.StudDiameter.Size = new System.Drawing.Size(126, 22);
+            this.StudDiameter.TabIndex = 12;
+            // 
+            // label_PlateMaterial
+            // 
+            this.structuresExtender.SetAttributeName(this.label_PlateMaterial, null);
+            this.structuresExtender.SetAttributeTypeName(this.label_PlateMaterial, null);
+            this.label_PlateMaterial.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label_PlateMaterial, null);
+            this.label_PlateMaterial.Location = new System.Drawing.Point(121, 329);
+            this.label_PlateMaterial.Name = "label_PlateMaterial";
+            this.label_PlateMaterial.Size = new System.Drawing.Size(89, 16);
+            this.label_PlateMaterial.TabIndex = 11;
+            this.label_PlateMaterial.Text = "Plate Material";
+            // 
+            // PlateMaterial
+            // 
+            this.structuresExtender.SetAttributeName(this.PlateMaterial, "PlateMaterial");
+            this.structuresExtender.SetAttributeTypeName(this.PlateMaterial, "String");
+            this.structuresExtender.SetBindPropertyName(this.PlateMaterial, null);
+            this.PlateMaterial.Location = new System.Drawing.Point(124, 348);
+            this.PlateMaterial.Name = "PlateMaterial";
+            this.PlateMaterial.Size = new System.Drawing.Size(126, 22);
+            this.PlateMaterial.TabIndex = 10;
+            // 
+            // label_StudMaterial
+            // 
+            this.structuresExtender.SetAttributeName(this.label_StudMaterial, null);
+            this.structuresExtender.SetAttributeTypeName(this.label_StudMaterial, null);
+            this.label_StudMaterial.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label_StudMaterial, null);
+            this.label_StudMaterial.Location = new System.Drawing.Point(121, 278);
+            this.label_StudMaterial.Name = "label_StudMaterial";
+            this.label_StudMaterial.Size = new System.Drawing.Size(85, 16);
+            this.label_StudMaterial.TabIndex = 9;
+            this.label_StudMaterial.Text = "Stud Material";
+            // 
+            // StudMaterial
+            // 
+            this.structuresExtender.SetAttributeName(this.StudMaterial, "StudMaterial");
+            this.structuresExtender.SetAttributeTypeName(this.StudMaterial, "String");
+            this.structuresExtender.SetBindPropertyName(this.StudMaterial, null);
+            this.StudMaterial.Location = new System.Drawing.Point(124, 297);
+            this.StudMaterial.Name = "StudMaterial";
+            this.StudMaterial.Size = new System.Drawing.Size(126, 22);
+            this.StudMaterial.TabIndex = 8;
+            // 
+            // label_InnerPlateThickness
+            // 
+            this.structuresExtender.SetAttributeName(this.label_InnerPlateThickness, null);
+            this.structuresExtender.SetAttributeTypeName(this.label_InnerPlateThickness, null);
+            this.label_InnerPlateThickness.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label_InnerPlateThickness, null);
+            this.label_InnerPlateThickness.Location = new System.Drawing.Point(121, 229);
+            this.label_InnerPlateThickness.Name = "label_InnerPlateThickness";
+            this.label_InnerPlateThickness.Size = new System.Drawing.Size(135, 16);
+            this.label_InnerPlateThickness.TabIndex = 7;
+            this.label_InnerPlateThickness.Text = "Inner Plate Thickness";
+            // 
+            // InnerPlateThickness
+            // 
+            this.structuresExtender.SetAttributeName(this.InnerPlateThickness, "InnerPlateThickness");
+            this.structuresExtender.SetAttributeTypeName(this.InnerPlateThickness, "Distance");
+            this.structuresExtender.SetBindPropertyName(this.InnerPlateThickness, null);
+            this.InnerPlateThickness.Location = new System.Drawing.Point(124, 248);
+            this.InnerPlateThickness.Name = "InnerPlateThickness";
+            this.InnerPlateThickness.Size = new System.Drawing.Size(126, 22);
+            this.InnerPlateThickness.TabIndex = 6;
+            // 
+            // label_StudLength
+            // 
+            this.structuresExtender.SetAttributeName(this.label_StudLength, null);
+            this.structuresExtender.SetAttributeTypeName(this.label_StudLength, null);
+            this.label_StudLength.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label_StudLength, null);
+            this.label_StudLength.Location = new System.Drawing.Point(121, 188);
+            this.label_StudLength.Name = "label_StudLength";
+            this.label_StudLength.Size = new System.Drawing.Size(77, 16);
+            this.label_StudLength.TabIndex = 5;
+            this.label_StudLength.Text = "Stud Length";
+            // 
+            // StudLength
+            // 
+            this.structuresExtender.SetAttributeName(this.StudLength, "StudLength");
+            this.structuresExtender.SetAttributeTypeName(this.StudLength, "Distance");
+            this.structuresExtender.SetBindPropertyName(this.StudLength, null);
+            this.StudLength.Location = new System.Drawing.Point(124, 207);
+            this.StudLength.Name = "StudLength";
+            this.StudLength.Size = new System.Drawing.Size(126, 22);
+            this.StudLength.TabIndex = 4;
+            // 
+            // label_VirtialDistanceStuds
+            // 
+            this.structuresExtender.SetAttributeName(this.label_VirtialDistanceStuds, null);
+            this.structuresExtender.SetAttributeTypeName(this.label_VirtialDistanceStuds, null);
+            this.label_VirtialDistanceStuds.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label_VirtialDistanceStuds, null);
+            this.label_VirtialDistanceStuds.Location = new System.Drawing.Point(121, 137);
+            this.label_VirtialDistanceStuds.Name = "label_VirtialDistanceStuds";
+            this.label_VirtialDistanceStuds.Size = new System.Drawing.Size(187, 16);
+            this.label_VirtialDistanceStuds.TabIndex = 3;
+            this.label_VirtialDistanceStuds.Text = "Virtial Distance between Studs";
+            // 
+            // VirtialDistancebetwStuds
+            // 
+            this.structuresExtender.SetAttributeName(this.VirtialDistancebetwStuds, "VirtDisbetwStuds");
+            this.structuresExtender.SetAttributeTypeName(this.VirtialDistancebetwStuds, "Distance");
+            this.structuresExtender.SetBindPropertyName(this.VirtialDistancebetwStuds, null);
+            this.VirtialDistancebetwStuds.Location = new System.Drawing.Point(124, 156);
+            this.VirtialDistancebetwStuds.Name = "VirtialDistancebetwStuds";
+            this.VirtialDistancebetwStuds.Size = new System.Drawing.Size(126, 22);
+            this.VirtialDistancebetwStuds.TabIndex = 2;
+            // 
+            // label_NoOfStuds
+            // 
+            this.structuresExtender.SetAttributeName(this.label_NoOfStuds, null);
+            this.structuresExtender.SetAttributeTypeName(this.label_NoOfStuds, null);
+            this.label_NoOfStuds.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label_NoOfStuds, null);
+            this.label_NoOfStuds.Location = new System.Drawing.Point(121, 87);
+            this.label_NoOfStuds.Name = "label_NoOfStuds";
+            this.label_NoOfStuds.Size = new System.Drawing.Size(133, 16);
+            this.label_NoOfStuds.TabIndex = 1;
+            this.label_NoOfStuds.Text = "No. of Studs in a Row";
+            // 
+            // NoOfStuds
+            // 
+            this.structuresExtender.SetAttributeName(this.NoOfStuds, "NoOfStuds");
+            this.structuresExtender.SetAttributeTypeName(this.NoOfStuds, "Integer");
+            this.structuresExtender.SetBindPropertyName(this.NoOfStuds, null);
+            this.NoOfStuds.Location = new System.Drawing.Point(124, 106);
+            this.NoOfStuds.Name = "NoOfStuds";
+            this.NoOfStuds.Size = new System.Drawing.Size(126, 22);
+            this.NoOfStuds.TabIndex = 0;
             // 
             // okApplyModifyGetOnOffCancel1
             // 
@@ -1100,6 +1340,8 @@ namespace BottomDuctPlugin
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChimnyPictureBox)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.tableLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1185,5 +1427,23 @@ namespace BottomDuctPlugin
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox TopCapYoffset;
         private System.Windows.Forms.TextBox TopCapXoffset;
+        private System.Windows.Forms.CheckBox checkBox_TopDuctHight;
+        private System.Windows.Forms.CheckBox checkBox_TopDuctLength;
+        private System.Windows.Forms.CheckBox checkBox_TopDuctWidth;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TextBox NoOfStuds;
+        private System.Windows.Forms.Label label_NoOfStuds;
+        private System.Windows.Forms.Label label_PlateMaterial;
+        private System.Windows.Forms.TextBox PlateMaterial;
+        private System.Windows.Forms.Label label_StudMaterial;
+        private System.Windows.Forms.TextBox StudMaterial;
+        private System.Windows.Forms.Label label_InnerPlateThickness;
+        private System.Windows.Forms.TextBox InnerPlateThickness;
+        private System.Windows.Forms.Label label_StudLength;
+        private System.Windows.Forms.TextBox StudLength;
+        private System.Windows.Forms.Label label_VirtialDistanceStuds;
+        private System.Windows.Forms.TextBox VirtialDistancebetwStuds;
+        private System.Windows.Forms.Label label_StudDiameter;
+        private System.Windows.Forms.TextBox StudDiameter;
     }
 }

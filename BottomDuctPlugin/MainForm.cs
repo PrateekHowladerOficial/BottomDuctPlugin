@@ -76,7 +76,7 @@ namespace BottomDuctPlugin
             comboBox_ChimnyLayout.Items.Clear();
             comboBox_ChimnyLayout.Items.Add("Cylindrical");
             comboBox_ChimnyLayout.Items.Add("Conical");
-            comboBox_ChimnyLayout.SelectedIndex = 1;
+            comboBox_ChimnyLayout.SelectedIndex = 0;
 
         }
 
