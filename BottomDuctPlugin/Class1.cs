@@ -397,6 +397,25 @@ namespace TeklaPH
             }
             return output;
         }
+        public static List<double> DoubleListInputModifier(List<double> doubles , int noOfElements)
+        {
+            List<double> output = new List<double>();
+            double hold = 0.0;
+            for (int i = 0;i < noOfElements;i++)
+            {
+                if(output.Count >= doubles.Count)
+                {
+                output.Add(hold); 
+                }
+                else
+                {
+                    hold = doubles[i];
+                    output.Add(hold);
+                }
+            }
+            return output;
+
+        }
     }
     public class GeoPlane
     {

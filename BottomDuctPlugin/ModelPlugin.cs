@@ -12,10 +12,12 @@ using Point = Tekla.Structures.Geometry3d.Point;
 using Vector = Tekla.Structures.Geometry3d.Vector;
 using Line = Tekla.Structures.Geometry3d.Line;
 using Position = Tekla.Structures.Model.Position;
+using Operation = Tekla.Structures.Model.Operations.Operation;
 using TeklaPH;
 using System.Linq;
 using Tekla.Structures.Model.Operations;
 using static Tekla.Structures.Filtering.Categories.ReinforcingBarFilterExpressions;
+using Tekla.Structures.ModelInternal;
 
 namespace BottomDuctPlugin
 
@@ -136,7 +138,7 @@ namespace BottomDuctPlugin
         [StructuresField("TpRadC")] 
         public double TpRadC;
         [StructuresField("LenShell")]  
-        public double LenShell;
+        public string LenShell;
         [StructuresField("QtyCon")]  
         public int QtyCon;
         [StructuresField("PltThkCon")] 
@@ -162,9 +164,10 @@ namespace BottomDuctPlugin
         public string StudMaterial;
         [StructuresField("PlateMaterial")]
         public string PlateMaterial;
-       
 
-
+        [StructuresField("DontWantInsolation")]
+        public string DontWantInsolation;
+        
         #endregion
     }
 
@@ -178,7 +181,7 @@ namespace BottomDuctPlugin
         //
         // Define variables for the field values.
         //
-        
+
         private double _Thickness;
         private double _TopDuctLength;
         private double _TopDuctHight;
@@ -222,9 +225,8 @@ namespace BottomDuctPlugin
 
         private int _ChimnyLayout;
 
-       
         private double _TopDiaC;
-        private double _LenShell;
+        private string _LenShell;
         private double _PltThkCon;
         private string _FinishChinmy;
         private int _SegCon;
@@ -239,6 +241,7 @@ namespace BottomDuctPlugin
         private string _StudMaterial;
         private string _PlateMaterial;
 
+        private string _DontWantInsolation;
 
         #endregion
 
@@ -274,7 +277,7 @@ namespace BottomDuctPlugin
             List<InputDefinition> PointList = new List<InputDefinition>();
             try
             {
-                 PointList = new List<InputDefinition>();
+                PointList = new List<InputDefinition>();
                 Picker Picker = new Picker();
                 Point PickedPoint1 = Picker.PickPoint("Pick the Point");
                 Point PickedPoint2 = Picker.PickPoint("Pick the Point for orientation");
@@ -299,7 +302,7 @@ namespace BottomDuctPlugin
                 //
                 // This is an example for selecting two points; change this to suit your needs.
                 //
-               
+
                 Point origine = (Point)Input[0].GetInput();
                 Point direction = (Point)Input[1].GetInput();
 
@@ -318,7 +321,7 @@ namespace BottomDuctPlugin
                    points3 = new List<Point>();
 
 
-                List<Part> CenterDuctParts = CenterDuctCreation(_CenterDuctHight,_CenterDuctWidth, _CenterDuctLength, out points1, out points2);
+                List<Part> CenterDuctParts = CenterDuctCreation(_CenterDuctHight, _CenterDuctWidth, _CenterDuctLength, out points1, out points2);
                 double lefthight = _LeftDuctHight,
                     leftWidth = _LeftDuctWidth,
                     leftRim = _LeftDuctRim,
@@ -327,42 +330,50 @@ namespace BottomDuctPlugin
                     leftHorizontalOffset = _LeftHorizontalOffset;
                 var ts = LeftDuctRimCreation(lefthight, leftWidth, leftRim, leftLength, leftVerticalOffset, leftHorizontalOffset, out points3);
                 LeftDuctCoveringCreation(points1, points3);
-                TopDuctCreation(_TopDuctHight, _TopDuctWidth, _TopDuctLength, _CenterDuctHight, CenterDuctParts[3] , out List<Point> pointsForTopCap);
+                TopDuctCreation(_TopDuctHight, _TopDuctWidth, _TopDuctLength, _CenterDuctHight, CenterDuctParts[3], out List<Point> pointsForTopCap);
                 Part rightRim = RightDuctRimCreation(_RightDuctDiamete, _RightDuctRim, _RightDuctLength, _CenterDuctLength, _CenterDuctHight);
                 RightDuctCreation(points2, _RightDuctDiamete, _RightDuctRim, _RightDuctLength, _CenterDuctLength, _CenterDuctHight, rightRim, out List<List<Point>> stiffnerpoints);
                 RightStiffnerCreation(stiffnerpoints, rightRim);
                 CenterDuctStiffnersCreation(_CenterDuctHight, _CenterDuctLength, _CenterDuctWidth, _TopDuctHight, _TopDuctLength, _TopDuctWidth, _Thickness);
                 LeftStiffnerCreation(points1, points3);
                 Point chinmyOrigin = new Point(_TopCapXoffset, _TopCapYoffset, _CenterDuctHight + _TopDuctHight + _TopCapHight);
-                TopCapDuctCreation(pointsForTopCap, _TopCapDiameter , chinmyOrigin, out stiffnerpoints, "4",out List<Point> capTopQuadeantsPoints);
+                TopCapDuctCreation(pointsForTopCap, _TopCapDiameter, chinmyOrigin, out stiffnerpoints, "4", out List<Point> capTopQuadeantsPoints);
                 List<Part> capHorizontalStiffners = TopHorizontalStiffneerCreation(pointsForTopCap);
-                VerticalChinmyStiffners(capTopQuadeantsPoints, chinmyOrigin, _LenShell,(_ChimnyLayout == 1)? _TopDiaC : _TopCapDiameter, capHorizontalStiffners);
 
 
+                List<double> doubles = TeklaPH.Input.InputConverter(_LenShell);
+                List<double> ShellHights = TeklaPH.Input.DoubleListInputModifier(doubles, _QtyCon);
+                double total = 0.0;
+                foreach (double s in ShellHights)
+                    total += s;
                 List<ControlArc> arcs1 = new List<ControlArc>(),
                     arcs2 = new List<ControlArc>();
-                ChimnyCreation(chinmyOrigin, _PltThkCon, _TopCapDiameter, _TopDiaC, _MtlCon,"99",out arcs1);
+                ChimnyCreation(chinmyOrigin, _PltThkCon, _TopCapDiameter, _TopDiaC, _MtlCon, "99", ShellHights, out arcs1, false);
+                VerticalChinmyStiffners(capTopQuadeantsPoints, chinmyOrigin, total, (_ChimnyLayout == 1) ? _TopDiaC : _TopCapDiameter, capHorizontalStiffners);
+                ArcStiffnerXYPlane(chinmyOrigin, _TopCapDiameter + _Thickness * 2, 60, _Profile, _Material);
+                List<int> ints = ParseIntegerList(_DontWantInsolation);
 
 
-                StudsForChinmyCreation(chinmyOrigin, _TopCapDiameter / 2,(_ChimnyLayout == 1)? _TopDiaC / 2 : _TopCapDiameter / 2, _NoOfStuds, _LenShell,_VirtDisbetwStuds,_StudLength);
+                StudsForChinmyCreation(chinmyOrigin, _TopCapDiameter / 2, (_ChimnyLayout == 1) ? _TopDiaC / 2 : _TopCapDiameter / 2, _NoOfStuds, total, _VirtDisbetwStuds, _StudLength, ShellHights);
 
-                ChimnyCreation(chinmyOrigin, _InnerPlateThickness, _TopCapDiameter - (_StudLength + _InnerPlateThickness) * 2, _TopDiaC - (_StudLength + _InnerPlateThickness) * 2, _PlateMaterial,"8",out arcs2);
-                TopCapDuctCreation(pointsForTopCap, _TopCapDiameter - ((_StudLength + _InnerPlateThickness) * 2), chinmyOrigin, out stiffnerpoints, "8",out  capTopQuadeantsPoints);
+                ChimnyCreation(chinmyOrigin, _InnerPlateThickness, _TopCapDiameter - (_StudLength*2 + _InnerPlateThickness) , _TopDiaC - (_StudLength + _InnerPlateThickness) * 2, _PlateMaterial, "8", ShellHights, out arcs2, true);
+                if ((ints != null) ? !ints.Contains(0) : true)
+                    TopCapDuctCreation(pointsForTopCap, _TopCapDiameter - ((_StudLength + _InnerPlateThickness) * 2), chinmyOrigin, out stiffnerpoints, "8", out capTopQuadeantsPoints);
                 ChinmyCap(arcs1, arcs2);
 
 
 
                 model.GetWorkPlaneHandler().SetCurrentTransformationPlane(currentTransformation);
 
-                
+
                 //
                 // Write your code here; better yet, create private methods and call them from here.
                 //
             }
             catch (Exception Exc)
             {
-               //MessageBox.Show(Exc.ToString());
-               Operation.DisplayPrompt(Exc.Message);
+                //MessageBox.Show(Exc.ToString());
+                Operation.DisplayPrompt(Exc.Message);
             }
 
             return true;
@@ -428,7 +439,7 @@ namespace BottomDuctPlugin
             _FinishChinmy = Data.FnCon;
             _MtlCon = Data.MtlCon;
 
-            
+            _DontWantInsolation = Data.DontWantInsolation;
 
             if (IsDefaultValue(_Thickness))
                 _Thickness = 20;
@@ -507,7 +518,7 @@ namespace BottomDuctPlugin
             }
             if (IsDefaultValue(_LenShell))
             {
-                _LenShell = 20000;
+                _LenShell = "5*4000";
             }
 
             if (IsDefaultValue(_PltThkCon))
@@ -569,7 +580,10 @@ namespace BottomDuctPlugin
                 _PlateMaterial = "Insulation";
             }
 
-
+            if (IsDefaultValue(_DontWantInsolation))
+            {
+                _DontWantInsolation = "";
+            }
 
         }
 
@@ -595,7 +609,7 @@ namespace BottomDuctPlugin
             }
             ContourPlate cp = new ContourPlate();
             cp.Contour.ContourPoints = platePoints;
-            cp.Profile.ProfileString = "PL" + _Thickness ;
+            cp.Profile.ProfileString = "PL" + _Thickness;
             cp.Material.MaterialString = _Material;
             cp.Class = "4";
             cp.Position.Depth = Position.DepthEnum.BEHIND;
@@ -821,7 +835,7 @@ namespace BottomDuctPlugin
             f = cp3.Insert();
             return new List<Part> { cp, cp1, cp2, cp3 };
         }
-        private List<Part> TopDuctCreation(double hight, double width, double length, double centerHight, Part part,out List<Point> pointsForTopCap)
+        private List<Part> TopDuctCreation(double hight, double width, double length, double centerHight, Part part, out List<Point> pointsForTopCap)
         {
             double topXOffset = _TopXOffset,
                 topYOffset = _TopYOffset;
@@ -834,7 +848,7 @@ namespace BottomDuctPlugin
                 p6 = new Point(-length / 2 + topXOffset, width / 2 + topYOffset, centerHight + hight),
                 p7 = new Point(-length / 2 + topXOffset, -width / 2 + topYOffset, centerHight + hight),
                 p8 = new Point(length / 2 + topXOffset, -width / 2 + topYOffset, centerHight + hight);
-            pointsForTopCap = new List<Point> {  p8,p7, p6, p5 };
+            pointsForTopCap = new List<Point> { p8, p7, p6, p5 };
 
 
             ArrayList platePoints = new ArrayList();
@@ -848,7 +862,7 @@ namespace BottomDuctPlugin
             }
             ContourPlate cp = new ContourPlate();
             cp.Contour.ContourPoints = platePoints;
-            cp.Profile.ProfileString = "PL" + _Thickness*2.5;
+            cp.Profile.ProfileString = "PL" + _Thickness * 2.5;
             cp.Material.MaterialString = _Material;
             cp.Class = BooleanPart.BooleanOperativeClassName;
             cp.Position.Depth = Position.DepthEnum.MIDDLE;
@@ -1449,8 +1463,8 @@ namespace BottomDuctPlugin
                     beam1.StartPoint = mid;
                     beam1.EndPoint = new Point(mid.X, mid.Y, 0);
                     hold = points1.Last();
-                    beam1.Profile.ProfileString = _Profile ;
-                    beam1.Material.MaterialString = _Material ;
+                    beam1.Profile.ProfileString = _Profile;
+                    beam1.Material.MaterialString = _Material;
                     beam1.Finish = "PAINT";
                     beam1.Position.Depth = Position.DepthEnum.FRONT;
                     beam1.Position.Plane = Position.PlaneEnum.MIDDLE;
@@ -1604,7 +1618,7 @@ namespace BottomDuctPlugin
             // Return the result as a list of quadrants
             return new List<List<Point>> { quadrant1, quadrant2, quadrant3, quadrant4 };
         }
-        public static List<Point> GenerateCirclePointsXY(Point origin, double radius, int pointsPerSet,bool flag)
+        public static List<Point> GenerateCirclePointsXY(Point origin, double radius, int pointsPerSet, bool flag)
         {
             if (pointsPerSet <= 0)
                 throw new ArgumentException("Number of points per set must be greater than zero.");
@@ -1614,15 +1628,15 @@ namespace BottomDuctPlugin
 
             // Prepare the lists to hold points for each slice
             List<Point> quadrant1 = new List<Point>();
-            
+
 
             // The total number of points around the circumference
-            int totalPoints = pointsPerSet ;
+            int totalPoints = pointsPerSet;
 
             // Increment for the angle
             double angleIncrement = 2 * Math.PI / totalPoints;
 
-           
+
             // Generate points
             for (int i = 0; i < totalPoints; i++)
             {
@@ -1635,32 +1649,32 @@ namespace BottomDuctPlugin
 
                 // The X-coordinate remains constant
                 Point point = new Point(x, y, origin.Z);
-               
-               
-                    quadrant1.Add(point);
-                
+
+
+                quadrant1.Add(point);
+
             }
-            
+
             // Return the result as a list of quadrants
-            return  quadrant1;
+            return quadrant1;
         }
-        private List<Part> TopCapDuctCreation(List<Point> points, double diameter, Point point, out List<List<Point>> stiffnerPoints ,string partClass ,out List<Point> capTopQuadrantsPoints)
+        private List<Part> TopCapDuctCreation(List<Point> points, double diameter, Point point, out List<List<Point>> stiffnerPoints, string partClass, out List<Point> capTopQuadrantsPoints)
         {
             capTopQuadrantsPoints = new List<Point>();
             Point p1 = new Point(
                 point.X,
-                point.Y + diameter/2,
+                point.Y + diameter / 2,
                 point.Z),
                 p3 = new Point(
-                    point.X + diameter/2 ,
+                    point.X + diameter / 2,
                 point.Y,
                 point.Z),
                 p2 = new Point(
-                    point.X ,
-                point.Y-diameter/2,
+                    point.X,
+                point.Y - diameter / 2,
                 point.Z),
                 p4 = new Point(
-                    point.X-diameter/2 ,
+                    point.X - diameter / 2,
                 point.Y,
                 point.Z);
             capTopQuadrantsPoints = new List<Point> { p2, p4, p1, p3 };
@@ -1724,11 +1738,11 @@ namespace BottomDuctPlugin
             f = cp3.Insert();
 
             List<Part> parts = new List<Part> { cp, cp1, cp2, cp3 };
-           
+
             List<List<Point>> holdPointsSets = GenerateCirclePointsXY(point, diameter / 2, _NoOfSections);
 
             stiffnerPoints = new List<List<Point>>();
-            GeometricPlane gp = new GeometricPlane(new Point(0 , 0, point.Z), new Vector(0, 0, 1));
+            GeometricPlane gp = new GeometricPlane(new Point(0, 0, point.Z), new Vector(0, 0, 1));
             int n = 0;
             foreach (Point p in new List<Point> { points[3], points[2], points[1], points[0] })
             {
@@ -1751,7 +1765,7 @@ namespace BottomDuctPlugin
                     cp4.Profile.ProfileString = "PL" + _Thickness;
                     cp4.Material.MaterialString = _Material;
                     cp4.Class = partClass;
-                    cp4.Position.Depth =  Position.DepthEnum.BEHIND;
+                    cp4.Position.Depth = Position.DepthEnum.BEHIND;
                     f = cp4.Insert();
                     parts.Add(cp4);
                 }
@@ -1768,7 +1782,7 @@ namespace BottomDuctPlugin
                 beam;
             Point mid = TeklaPH.Line.MidPoint(points[0], points[2]);
             double dia = Math.Sqrt(2 * _Thickness * _Thickness);
-            for (int i = 0; i < points.Count; i++) 
+            for (int i = 0; i < points.Count; i++)
             {
                 Point p1 = TeklaPH.Line.FindPointOnLine(points[i], mid, dia * (-1));
                 Point p2 = TeklaPH.Line.FindPointOnLine(points[(i == points.Count - 1) ? 0 : i + 1], mid, dia * (-1));
@@ -1784,7 +1798,7 @@ namespace BottomDuctPlugin
                 bool Result = false;
                 Result = beam.Insert();
                 parts.Add(beam);
-                if(i != 0)
+                if (i != 0)
                 {
                     TeklaPH.Fitting.SameProfileEdgeJoint(beam, holdBeam);
                 }
@@ -1817,13 +1831,13 @@ namespace BottomDuctPlugin
             {
                 Point capTopPoint = capTopQuadeantsPoints[i];
                 Point partMidPoint = TeklaPH.Line.MidPoint((capHorizontalStiffners[i] as Beam).StartPoint, (capHorizontalStiffners[i] as Beam).EndPoint);
-                Point center = new Point(chinmyOrigin.X , chinmyOrigin.Y, capTopPoint.Z);
+                Point center = new Point(chinmyOrigin.X, chinmyOrigin.Y, capTopPoint.Z);
                 Point centerPoint = TeklaPH.Line.FindPointOnLine(capTopPoint, center, -((_PltThkCon >= _Thickness) ? _PltThkCon : _Thickness));
-                
+
                 Point topPoint = topPoints[i];
                 ArrayList platePoints = new ArrayList();
-                
-                foreach (Point p in new List<Point> { partMidPoint, centerPoint,topPoint })
+
+                foreach (Point p in new List<Point> { partMidPoint, centerPoint, topPoint })
                 {
                     ContourPoint cPoints = new ContourPoint(p, new Chamfer());
                     platePoints.Add(cPoints);
@@ -1845,38 +1859,44 @@ namespace BottomDuctPlugin
             }
             return parts;
         }
-        private List<Part> StudsForChinmyCreation(Point origin, double bottomRadius, double topRadius, int pointsPerSet, double hight, double verticalDistance, double studLength)
+        private List<Part> StudsForChinmyCreation(Point origin, double bottomRadius, double topRadius, int pointsPerSet, double hight, double verticalDistance, double studLength, List<double> doubles)
         {
-
-            double total = 0;
+            List<int> ints = ParseIntegerList(_DontWantInsolation);
+            double total = 0, sumTotal = doubles[0];
+            int i = 1;
             List<Part> parts = new List<Part>();
             do
             {
                 total += verticalDistance;
+                if (total >= sumTotal)
+                {
+                    i++;
+                    sumTotal += doubles[i - 1];
+                }
                 Point newOrigin = new Point(origin.X, origin.Y, origin.Z + total);
                 double radius = GetRadiusAtHeight(topRadius, bottomRadius, hight, total);
                 List<Point> holdPointsSets = GenerateCirclePointsXY(newOrigin, radius, pointsPerSet, true);
-
-
-                foreach (Point point in holdPointsSets)
+                if ((ints != null) ? !ints.Contains(i) : true)
                 {
+                    foreach (Point point in holdPointsSets)
+                    {
 
-                    Point sp = new Point(point.X, point.Y, point.Z);
-                    Point ep = TeklaPH.Line.FindPointOnLine(sp, newOrigin, studLength);
-                    Beam beam = new Beam(sp, ep);
-                    beam.Profile.ProfileString = "D50";
-                    beam.Material.MaterialString = _Material;
-                    beam.Finish = "PAINT";
-                    beam.Position.Depth = Position.DepthEnum.MIDDLE;
-                    beam.Position.Plane = Position.PlaneEnum.MIDDLE;
-                    beam.Position.Rotation = Position.RotationEnum.FRONT;
-                    beam.Class = "2";
-                    bool Result = false;
-                    Result = beam.Insert();
-                    parts.Add(beam);
+                        Point sp = new Point(point.X, point.Y, point.Z);
+                        Point ep = TeklaPH.Line.FindPointOnLine(sp, newOrigin, studLength);
+                        Beam beam = new Beam(sp, ep);
+                        beam.Profile.ProfileString = "D50";
+                        beam.Material.MaterialString = _Material;
+                        beam.Finish = "PAINT";
+                        beam.Position.Depth = Position.DepthEnum.MIDDLE;
+                        beam.Position.Plane = Position.PlaneEnum.MIDDLE;
+                        beam.Position.Rotation = Position.RotationEnum.FRONT;
+                        beam.Class = "2";
+                        bool Result = false;
+                        Result = beam.Insert();
+                        parts.Add(beam);
 
+                    }
                 }
-
 
             } while (total + verticalDistance < hight);
             return parts;
@@ -1912,47 +1932,100 @@ namespace BottomDuctPlugin
             }
             return parts;
         }
+        private List<Part> ArcStiffnerXYPlane(Point point, double diameter, int sections, string profile, string material)
+        {
+            Point p1 = new Point(
+                point.X + diameter / 2,
+                point.Y,
+                point.Z),
+                p2 = new Point(
+                point.X,
+                point.Y + diameter / 2,
+                point.Z),
+                p3 = new Point(
+                point.X - diameter / 2,
+                point.Y,
+                point.Z),
+                p4 = new Point(
+                point.X,
+                point.Y - diameter / 2,
+                point.Z);
+            List<Point> points = new List<Point> { p1, p2, p3, p4 };
+            List<Part> parts = new List<Part>();
+            for (int i = 0;i<points.Count;i++)
+            {
+                Point po1 = points[i],
+                    po2 = points[(i == points.Count - 1) ? 0 : i + 1];
+                ArrayList platePoints = new ArrayList();
+                foreach (Point p in new List<Point> { po1, TeklaPH.Line.FindPointOnLine(point, TeklaPH.Line.MidPoint(po1, po2), diameter * 0.5), po2 })
+                {
+                    ContourPoint cPoints = new ContourPoint(p,(new List<Point> { po1,po2}.Contains(p))? null : new Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_ARC_POINT));
+                    platePoints.Add(cPoints);
+                }
+                PolyBeam polyBeam = new PolyBeam(PolyBeam.PolyBeamTypeEnum.BEAM);
 
+                polyBeam.Contour.ContourPoints = platePoints;
 
-        private void ChimnyCreation(Point point,double thickness,double bottomDiameter ,double topDiameter,string material,string plateClass,out List<ControlArc> arcs)
+                polyBeam.Profile.ProfileString = _Profile;
+                polyBeam.Material.MaterialString = _Material;
+                polyBeam.Finish = "PAINT";
+                polyBeam.Position.Depth = Position.DepthEnum.BEHIND;
+                polyBeam.Position.Plane = Position.PlaneEnum.RIGHT;
+                polyBeam.Position.Rotation = Position.RotationEnum.FRONT;
+                polyBeam.Class = "11";
+                bool Result = false;
+                Result = polyBeam.Insert();
+                parts.Add(polyBeam);
+            }
+            return parts;
+        } 
+        private void ChimnyCreation(Point point,double thickness,double bottomDiameter ,double topDiameter,string material,string plateClass,List<double> totalLength,out List<ControlArc> arcs,bool InnerInsolutionFlag)
         {
             try
             {
+                List<int> ints = ParseIntegerList(_DontWantInsolation);
+
                 arcs = new List<ControlArc>();
                 int parts = _SegCon;
                 var offset = 0.5 * thickness;
                 double radangle = (360.0 / parts) * (Math.PI / 180);
                 var btmradius = bottomDiameter / 2 + offset;
                 var topradius = (_ChimnyLayout == 0) ? bottomDiameter / 2 + offset : topDiameter / 2 + offset;
-                var totalheight = _LenShell;
-                var heightring = totalheight / _QtyCon;
+                var totalheight = 0.0;
+                foreach(double d  in totalLength) 
+                    totalheight += d;
+                var heightring = 0.0;
 
                 for (int i = 1; i <= parts; i++)
                 {
-
+                    
                     Point startPoint1 = new Point((point.X + (btmradius * Math.Cos((i - 1) * radangle))), (point.Y + (btmradius * Math.Sin((i - 1) * radangle))), point.Z);
                     Point endPoint1 = new Point((point.X + (btmradius * Math.Cos(i * radangle))), (point.Y + (btmradius * Math.Sin(i * radangle))), point.Z);
                     var arc1 = ArcFormation(startPoint1, endPoint1, point, btmradius, radangle, ((i * 2) - 1));
 
 
-                    for (int j = 1; j <= _QtyCon; j++)
+                    for (int j = 0; j < _QtyCon; j++)
                     {
+                        heightring += totalLength[j];
                         //double h_j = j * heightring;
-                        var midradius = btmradius - ((btmradius - topradius) / totalheight) * j * heightring;
+                        var midradius = btmradius - ((btmradius - topradius) / totalheight) * heightring;
                         if (topradius > btmradius)
                         {
-                            midradius = btmradius + ((topradius - btmradius) / totalheight) * j * heightring;
+                            midradius = btmradius + ((topradius - btmradius) / totalheight) * heightring;
                         }
-                        Point centrePoint2 = point + new Vector(0, 0, 1) * heightring * j;
+                        Point centrePoint2 = point + new Vector(0, 0, 1) * heightring ;
                         Point startPoint2 = new Point((centrePoint2.X + (midradius * Math.Cos((i - 1) * radangle))), (centrePoint2.Y + (midradius * Math.Sin((i - 1) * radangle))), centrePoint2.Z);
                         Point endPoint2 = new Point((centrePoint2.X + midradius * Math.Cos(i * radangle)), (centrePoint2.Y + (midradius * Math.Sin(i * radangle))), centrePoint2.Z);
                         var arc2 = ArcFormation(startPoint2, endPoint2, centrePoint2, midradius, radangle, ((i * 2) - 1));
-                        var loftedPlate2 = CreateConicalRing(arc1, arc2, thickness, material, plateClass);
+                        LoftedPlate loftedPlate2;
+                        if ((InnerInsolutionFlag)?((ints != null) ? !ints.Contains(j+1) : true):true)
+                             loftedPlate2 = CreateConicalRing(arc1, arc2, thickness, material, plateClass);
 
                         //btmradius = midradius;
                         arc1 = arc2;
                     }
                     arcs.Add(arc1);
+                    heightring = 0.0;
                 }
                 Operation.DisplayPrompt("Conical Ring is placed.");
             }
@@ -1998,6 +2071,34 @@ namespace BottomDuctPlugin
             result = loftedPlate2.Insert();
            
             return loftedPlate2;
+        }
+        public static List<int> ParseIntegerList(string input)
+        {
+            // Validate input
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return null;
+            }
+
+            // Split the input string by spaces or commas
+            string[] parts = input.Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+            List<int> integers = new List<int>();
+
+            foreach (string part in parts)
+            {
+                // Try to parse each part as an integer
+                if (int.TryParse(part, out int number))
+                {
+                    integers.Add(number);
+                }
+                else
+                {
+                    // Throw an error if a non-integer value is found
+                    throw new FormatException($"Invalid data found: '{part}' is not an integer.");
+                }
+            }
+
+            return integers;
         }
 
         #endregion
