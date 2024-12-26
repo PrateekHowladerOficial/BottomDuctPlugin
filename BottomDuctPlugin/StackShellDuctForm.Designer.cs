@@ -1,6 +1,6 @@
 namespace BottomDuctPlugin
 {
-    partial class MainForm
+    partial class StackShellDuctForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace BottomDuctPlugin
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StackShellDuctForm));
             this.saveLoad = new Tekla.Structures.Dialog.UIControls.SaveLoad();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.ParametersTabPage = new System.Windows.Forms.TabPage();

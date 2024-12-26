@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace BottomDuctPlugin
 {
-    public partial class MainForm : Tekla.Structures.Dialog.PluginFormBase
+    public partial class StackShellDuctForm : Tekla.Structures.Dialog.PluginFormBase
     {
         
-        public MainForm()
+        public StackShellDuctForm()
         {
             InitializeComponent();
         }
