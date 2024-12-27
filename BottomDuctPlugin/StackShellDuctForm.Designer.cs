@@ -1,6 +1,6 @@
 namespace BottomDuctPlugin
 {
-    partial class MainForm
+    partial class StackShellDuctForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace BottomDuctPlugin
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StackShellDuctForm));
             this.saveLoad = new Tekla.Structures.Dialog.UIControls.SaveLoad();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.ParametersTabPage = new System.Windows.Forms.TabPage();
@@ -67,6 +67,11 @@ namespace BottomDuctPlugin
             this.TopDuctWidth = new System.Windows.Forms.TextBox();
             this.BottomDuct_PictureBox = new System.Windows.Forms.PictureBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.textBox_ChinmyStiffVerti = new System.Windows.Forms.TextBox();
+            this.label_ChinmyStiffProfile = new System.Windows.Forms.Label();
+            this.textBox_ChinmyStiffProfile = new System.Windows.Forms.TextBox();
+            this.label_ChinmeyStiffMaterial = new System.Windows.Forms.Label();
+            this.textBox_ChinmeyStiffMaterial = new System.Windows.Forms.TextBox();
             this.label_Profile = new System.Windows.Forms.Label();
             this.Profile = new System.Windows.Forms.TextBox();
             this.label_Material = new System.Windows.Forms.Label();
@@ -79,8 +84,11 @@ namespace BottomDuctPlugin
             this.CenterStiffnerRightOffset = new System.Windows.Forms.TextBox();
             this.CenterStiffnerLeftOffset = new System.Windows.Forms.TextBox();
             this.LeftStiffnerOffset = new System.Windows.Forms.TextBox();
+            this.pictureBox_chinmeyStiffners = new System.Windows.Forms.PictureBox();
             this.pictureBox_Stiffner = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label_TotalVertiHeightOfShells = new System.Windows.Forms.Label();
+            this.TotalChinmeyHightDisplay = new System.Windows.Forms.TextBox();
             this.TopCapDiameter = new System.Windows.Forms.TextBox();
             this.label_TopCapHight = new System.Windows.Forms.Label();
             this.label_TopCapYoffset = new System.Windows.Forms.Label();
@@ -89,7 +97,6 @@ namespace BottomDuctPlugin
             this.TopCapYoffset = new System.Windows.Forms.TextBox();
             this.TopCapXoffset = new System.Windows.Forms.TextBox();
             this.comboBox_ChimnyLayout = new System.Windows.Forms.ComboBox();
-            this.ChimnyPictureBox = new System.Windows.Forms.PictureBox();
             this.label_MaterialChinmy = new System.Windows.Forms.Label();
             this.textBoxMtlCon = new System.Windows.Forms.TextBox();
             this.textBoxFinishCon = new System.Windows.Forms.TextBox();
@@ -99,12 +106,31 @@ namespace BottomDuctPlugin
             this.textBoxPltThkcon = new System.Windows.Forms.TextBox();
             this.textBoxRingQtycon = new System.Windows.Forms.TextBox();
             this.textBoxlengthCon = new System.Windows.Forms.TextBox();
-            this.label_TotalVertiHeightofShell = new System.Windows.Forms.Label();
+            this.label_VertiHeightofShell = new System.Windows.Forms.Label();
             this.label_FinishChinmy = new System.Windows.Forms.Label();
             this.label_NoofSegments = new System.Windows.Forms.Label();
             this.label_ThkofRing = new System.Windows.Forms.Label();
             this.label_NoofRings = new System.Windows.Forms.Label();
             this.label_RadiusofBottomRing = new System.Windows.Forms.Label();
+            this.ChimnyPictureBox = new System.Windows.Forms.PictureBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label_dontWantInsolation = new System.Windows.Forms.Label();
+            this.textBox_dontWantInsolation = new System.Windows.Forms.TextBox();
+            this.label_StudDiameter = new System.Windows.Forms.Label();
+            this.StudDiameter = new System.Windows.Forms.TextBox();
+            this.label_PlateMaterial = new System.Windows.Forms.Label();
+            this.PlateMaterial = new System.Windows.Forms.TextBox();
+            this.label_StudMaterial = new System.Windows.Forms.Label();
+            this.StudMaterial = new System.Windows.Forms.TextBox();
+            this.label_InnerPlateThickness = new System.Windows.Forms.Label();
+            this.InnerPlateThickness = new System.Windows.Forms.TextBox();
+            this.label_StudLength = new System.Windows.Forms.Label();
+            this.StudLength = new System.Windows.Forms.TextBox();
+            this.label_VirtialDistanceStuds = new System.Windows.Forms.Label();
+            this.VirtialDistancebetwStuds = new System.Windows.Forms.TextBox();
+            this.label_NoOfStuds = new System.Windows.Forms.Label();
+            this.NoOfStuds = new System.Windows.Forms.TextBox();
+            this.pictureBox_insolution = new System.Windows.Forms.PictureBox();
             this.okApplyModifyGetOnOffCancel1 = new Tekla.Structures.Dialog.UIControls.OkApplyModifyGetOnOffCancel();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -112,9 +138,12 @@ namespace BottomDuctPlugin
             this.ParametersTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BottomDuct_PictureBox)).BeginInit();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_chinmeyStiffners)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Stiffner)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChimnyPictureBox)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_insolution)).BeginInit();
             this.tableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -145,6 +174,7 @@ namespace BottomDuctPlugin
             this.tabControl.Controls.Add(this.ParametersTabPage);
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.tabPage3);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(4, 67);
             this.tabControl.Margin = new System.Windows.Forms.Padding(4);
@@ -561,6 +591,11 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeName(this.tabPage1, null);
             this.structuresExtender.SetAttributeTypeName(this.tabPage1, null);
             this.structuresExtender.SetBindPropertyName(this.tabPage1, null);
+            this.tabPage1.Controls.Add(this.textBox_ChinmyStiffVerti);
+            this.tabPage1.Controls.Add(this.label_ChinmyStiffProfile);
+            this.tabPage1.Controls.Add(this.textBox_ChinmyStiffProfile);
+            this.tabPage1.Controls.Add(this.label_ChinmeyStiffMaterial);
+            this.tabPage1.Controls.Add(this.textBox_ChinmeyStiffMaterial);
             this.tabPage1.Controls.Add(this.label_Profile);
             this.tabPage1.Controls.Add(this.Profile);
             this.tabPage1.Controls.Add(this.label_Material);
@@ -573,6 +608,7 @@ namespace BottomDuctPlugin
             this.tabPage1.Controls.Add(this.CenterStiffnerRightOffset);
             this.tabPage1.Controls.Add(this.CenterStiffnerLeftOffset);
             this.tabPage1.Controls.Add(this.LeftStiffnerOffset);
+            this.tabPage1.Controls.Add(this.pictureBox_chinmeyStiffners);
             this.tabPage1.Controls.Add(this.pictureBox_Stiffner);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
@@ -581,16 +617,70 @@ namespace BottomDuctPlugin
             this.tabPage1.Text = "Stiffener";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // textBox_ChinmyStiffVerti
+            // 
+            this.structuresExtender.SetAttributeName(this.textBox_ChinmyStiffVerti, "ChinmyStiffVerti");
+            this.structuresExtender.SetAttributeTypeName(this.textBox_ChinmyStiffVerti, "Distance");
+            this.structuresExtender.SetBindPropertyName(this.textBox_ChinmyStiffVerti, null);
+            this.textBox_ChinmyStiffVerti.Location = new System.Drawing.Point(795, 294);
+            this.textBox_ChinmyStiffVerti.Name = "textBox_ChinmyStiffVerti";
+            this.textBox_ChinmyStiffVerti.Size = new System.Drawing.Size(100, 22);
+            this.textBox_ChinmyStiffVerti.TabIndex = 56;
+            // 
+            // label_ChinmyStiffProfile
+            // 
+            this.structuresExtender.SetAttributeName(this.label_ChinmyStiffProfile, null);
+            this.structuresExtender.SetAttributeTypeName(this.label_ChinmyStiffProfile, null);
+            this.label_ChinmyStiffProfile.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label_ChinmyStiffProfile, null);
+            this.label_ChinmyStiffProfile.Location = new System.Drawing.Point(669, 518);
+            this.label_ChinmyStiffProfile.Name = "label_ChinmyStiffProfile";
+            this.label_ChinmyStiffProfile.Size = new System.Drawing.Size(45, 16);
+            this.label_ChinmyStiffProfile.TabIndex = 55;
+            this.label_ChinmyStiffProfile.Text = "Profile";
+            // 
+            // textBox_ChinmyStiffProfile
+            // 
+            this.structuresExtender.SetAttributeName(this.textBox_ChinmyStiffProfile, "ChinmyStiffProfile");
+            this.structuresExtender.SetAttributeTypeName(this.textBox_ChinmyStiffProfile, "String");
+            this.structuresExtender.SetBindPropertyName(this.textBox_ChinmyStiffProfile, null);
+            this.textBox_ChinmyStiffProfile.Location = new System.Drawing.Point(672, 537);
+            this.textBox_ChinmyStiffProfile.Name = "textBox_ChinmyStiffProfile";
+            this.textBox_ChinmyStiffProfile.Size = new System.Drawing.Size(100, 22);
+            this.textBox_ChinmyStiffProfile.TabIndex = 54;
+            // 
+            // label_ChinmeyStiffMaterial
+            // 
+            this.structuresExtender.SetAttributeName(this.label_ChinmeyStiffMaterial, null);
+            this.structuresExtender.SetAttributeTypeName(this.label_ChinmeyStiffMaterial, null);
+            this.label_ChinmeyStiffMaterial.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label_ChinmeyStiffMaterial, null);
+            this.label_ChinmeyStiffMaterial.Location = new System.Drawing.Point(669, 466);
+            this.label_ChinmeyStiffMaterial.Name = "label_ChinmeyStiffMaterial";
+            this.label_ChinmeyStiffMaterial.Size = new System.Drawing.Size(55, 16);
+            this.label_ChinmeyStiffMaterial.TabIndex = 53;
+            this.label_ChinmeyStiffMaterial.Text = "Material";
+            // 
+            // textBox_ChinmeyStiffMaterial
+            // 
+            this.structuresExtender.SetAttributeName(this.textBox_ChinmeyStiffMaterial, "ChinStiffMate");
+            this.structuresExtender.SetAttributeTypeName(this.textBox_ChinmeyStiffMaterial, "String");
+            this.structuresExtender.SetBindPropertyName(this.textBox_ChinmeyStiffMaterial, null);
+            this.textBox_ChinmeyStiffMaterial.Location = new System.Drawing.Point(672, 485);
+            this.textBox_ChinmeyStiffMaterial.Name = "textBox_ChinmeyStiffMaterial";
+            this.textBox_ChinmeyStiffMaterial.Size = new System.Drawing.Size(100, 22);
+            this.textBox_ChinmeyStiffMaterial.TabIndex = 52;
+            // 
             // label_Profile
             // 
             this.structuresExtender.SetAttributeName(this.label_Profile, null);
             this.structuresExtender.SetAttributeTypeName(this.label_Profile, null);
             this.label_Profile.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_Profile, null);
-            this.label_Profile.Location = new System.Drawing.Point(25, 268);
+            this.label_Profile.Location = new System.Drawing.Point(45, 504);
             this.label_Profile.Name = "label_Profile";
             this.label_Profile.Size = new System.Drawing.Size(45, 16);
-            this.label_Profile.TabIndex = 31;
+            this.label_Profile.TabIndex = 50;
             this.label_Profile.Text = "Profile";
             // 
             // Profile
@@ -598,10 +688,10 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeName(this.Profile, "Profile");
             this.structuresExtender.SetAttributeTypeName(this.Profile, "String");
             this.structuresExtender.SetBindPropertyName(this.Profile, null);
-            this.Profile.Location = new System.Drawing.Point(28, 287);
+            this.Profile.Location = new System.Drawing.Point(48, 523);
             this.Profile.Name = "Profile";
             this.Profile.Size = new System.Drawing.Size(100, 22);
-            this.Profile.TabIndex = 30;
+            this.Profile.TabIndex = 49;
             // 
             // label_Material
             // 
@@ -609,10 +699,10 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_Material, null);
             this.label_Material.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_Material, null);
-            this.label_Material.Location = new System.Drawing.Point(25, 216);
+            this.label_Material.Location = new System.Drawing.Point(45, 452);
             this.label_Material.Name = "label_Material";
             this.label_Material.Size = new System.Drawing.Size(55, 16);
-            this.label_Material.TabIndex = 29;
+            this.label_Material.TabIndex = 48;
             this.label_Material.Text = "Material";
             // 
             // Material
@@ -620,20 +710,20 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeName(this.Material, "Material");
             this.structuresExtender.SetAttributeTypeName(this.Material, "String");
             this.structuresExtender.SetBindPropertyName(this.Material, null);
-            this.Material.Location = new System.Drawing.Point(28, 235);
+            this.Material.Location = new System.Drawing.Point(48, 471);
             this.Material.Name = "Material";
             this.Material.Size = new System.Drawing.Size(100, 22);
-            this.Material.TabIndex = 28;
+            this.Material.TabIndex = 47;
             // 
             // CenterHorizaltalStiffner
             // 
             this.structuresExtender.SetAttributeName(this.CenterHorizaltalStiffner, "CentHorizStiffner");
             this.structuresExtender.SetAttributeTypeName(this.CenterHorizaltalStiffner, "Distance");
             this.structuresExtender.SetBindPropertyName(this.CenterHorizaltalStiffner, null);
-            this.CenterHorizaltalStiffner.Location = new System.Drawing.Point(618, 124);
+            this.CenterHorizaltalStiffner.Location = new System.Drawing.Point(378, 93);
             this.CenterHorizaltalStiffner.Name = "CenterHorizaltalStiffner";
             this.CenterHorizaltalStiffner.Size = new System.Drawing.Size(100, 22);
-            this.CenterHorizaltalStiffner.TabIndex = 27;
+            this.CenterHorizaltalStiffner.TabIndex = 46;
             // 
             // label_TotalNumberOfStiffnres
             // 
@@ -641,10 +731,10 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_TotalNumberOfStiffnres, null);
             this.label_TotalNumberOfStiffnres.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_TotalNumberOfStiffnres, null);
-            this.label_TotalNumberOfStiffnres.Location = new System.Drawing.Point(352, 467);
+            this.label_TotalNumberOfStiffnres.Location = new System.Drawing.Point(158, 393);
             this.label_TotalNumberOfStiffnres.Name = "label_TotalNumberOfStiffnres";
             this.label_TotalNumberOfStiffnres.Size = new System.Drawing.Size(155, 16);
-            this.label_TotalNumberOfStiffnres.TabIndex = 26;
+            this.label_TotalNumberOfStiffnres.TabIndex = 45;
             this.label_TotalNumberOfStiffnres.Text = "Total Number Of Stiffnres";
             // 
             // CenterStiffnerCount
@@ -652,74 +742,85 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeName(this.CenterStiffnerCount, "CenterStiffnerCount");
             this.structuresExtender.SetAttributeTypeName(this.CenterStiffnerCount, "Integer");
             this.structuresExtender.SetBindPropertyName(this.CenterStiffnerCount, null);
-            this.CenterStiffnerCount.Location = new System.Drawing.Point(349, 486);
+            this.CenterStiffnerCount.Location = new System.Drawing.Point(155, 412);
             this.CenterStiffnerCount.Name = "CenterStiffnerCount";
             this.CenterStiffnerCount.Size = new System.Drawing.Size(47, 22);
-            this.CenterStiffnerCount.TabIndex = 25;
+            this.CenterStiffnerCount.TabIndex = 44;
             // 
             // CenterStiffnerText
             // 
             this.structuresExtender.SetAttributeName(this.CenterStiffnerText, "CenterStiffnerText");
             this.structuresExtender.SetAttributeTypeName(this.CenterStiffnerText, "DistanceList");
             this.structuresExtender.SetBindPropertyName(this.CenterStiffnerText, null);
-            this.CenterStiffnerText.Location = new System.Drawing.Point(402, 486);
+            this.CenterStiffnerText.Location = new System.Drawing.Point(208, 412);
             this.CenterStiffnerText.Name = "CenterStiffnerText";
             this.CenterStiffnerText.Size = new System.Drawing.Size(100, 22);
-            this.CenterStiffnerText.TabIndex = 24;
+            this.CenterStiffnerText.TabIndex = 43;
             // 
             // RightStiffnerOffset
             // 
             this.structuresExtender.SetAttributeName(this.RightStiffnerOffset, "RightStiffnerOffset");
             this.structuresExtender.SetAttributeTypeName(this.RightStiffnerOffset, "Distance");
             this.structuresExtender.SetBindPropertyName(this.RightStiffnerOffset, null);
-            this.RightStiffnerOffset.Location = new System.Drawing.Point(652, 486);
+            this.RightStiffnerOffset.Location = new System.Drawing.Point(338, 363);
             this.RightStiffnerOffset.Name = "RightStiffnerOffset";
             this.RightStiffnerOffset.Size = new System.Drawing.Size(100, 22);
-            this.RightStiffnerOffset.TabIndex = 23;
+            this.RightStiffnerOffset.TabIndex = 42;
             // 
             // CenterStiffnerRightOffset
             // 
             this.structuresExtender.SetAttributeName(this.CenterStiffnerRightOffset, "CentStifRightOffset");
             this.structuresExtender.SetAttributeTypeName(this.CenterStiffnerRightOffset, "Distance");
             this.structuresExtender.SetBindPropertyName(this.CenterStiffnerRightOffset, null);
-            this.CenterStiffnerRightOffset.Location = new System.Drawing.Point(517, 486);
+            this.CenterStiffnerRightOffset.Location = new System.Drawing.Point(232, 363);
             this.CenterStiffnerRightOffset.Name = "CenterStiffnerRightOffset";
             this.CenterStiffnerRightOffset.Size = new System.Drawing.Size(100, 22);
-            this.CenterStiffnerRightOffset.TabIndex = 22;
+            this.CenterStiffnerRightOffset.TabIndex = 41;
             // 
             // CenterStiffnerLeftOffset
             // 
             this.structuresExtender.SetAttributeName(this.CenterStiffnerLeftOffset, "CentStifLeftOffset");
             this.structuresExtender.SetAttributeTypeName(this.CenterStiffnerLeftOffset, "Distance");
             this.structuresExtender.SetBindPropertyName(this.CenterStiffnerLeftOffset, null);
-            this.CenterStiffnerLeftOffset.Location = new System.Drawing.Point(236, 486);
+            this.CenterStiffnerLeftOffset.Location = new System.Drawing.Point(126, 363);
             this.CenterStiffnerLeftOffset.MaximumSize = new System.Drawing.Size(100, 22);
             this.CenterStiffnerLeftOffset.MinimumSize = new System.Drawing.Size(100, 22);
             this.CenterStiffnerLeftOffset.Name = "CenterStiffnerLeftOffset";
             this.CenterStiffnerLeftOffset.Size = new System.Drawing.Size(100, 22);
-            this.CenterStiffnerLeftOffset.TabIndex = 21;
+            this.CenterStiffnerLeftOffset.TabIndex = 40;
             // 
             // LeftStiffnerOffset
             // 
             this.structuresExtender.SetAttributeName(this.LeftStiffnerOffset, "LeftStiffnerOffset");
             this.structuresExtender.SetAttributeTypeName(this.LeftStiffnerOffset, "Distance");
             this.structuresExtender.SetBindPropertyName(this.LeftStiffnerOffset, null);
-            this.LeftStiffnerOffset.Location = new System.Drawing.Point(114, 486);
+            this.LeftStiffnerOffset.Location = new System.Drawing.Point(20, 363);
             this.LeftStiffnerOffset.Name = "LeftStiffnerOffset";
             this.LeftStiffnerOffset.Size = new System.Drawing.Size(100, 22);
-            this.LeftStiffnerOffset.TabIndex = 20;
+            this.LeftStiffnerOffset.TabIndex = 39;
+            // 
+            // pictureBox_chinmeyStiffners
+            // 
+            this.structuresExtender.SetAttributeName(this.pictureBox_chinmeyStiffners, null);
+            this.structuresExtender.SetAttributeTypeName(this.pictureBox_chinmeyStiffners, null);
+            this.structuresExtender.SetBindPropertyName(this.pictureBox_chinmeyStiffners, null);
+            this.pictureBox_chinmeyStiffners.Location = new System.Drawing.Point(569, 41);
+            this.pictureBox_chinmeyStiffners.Name = "pictureBox_chinmeyStiffners";
+            this.pictureBox_chinmeyStiffners.Size = new System.Drawing.Size(250, 412);
+            this.pictureBox_chinmeyStiffners.TabIndex = 51;
+            this.pictureBox_chinmeyStiffners.TabStop = false;
             // 
             // pictureBox_Stiffner
             // 
             this.structuresExtender.SetAttributeName(this.pictureBox_Stiffner, null);
             this.structuresExtender.SetAttributeTypeName(this.pictureBox_Stiffner, null);
-            this.pictureBox_Stiffner.BackgroundImage = global::BottomDuctPlugin.Properties.Resources.Bottom_Duct_Application_Image_1_;
+            this.pictureBox_Stiffner.BackgroundImage = global::BottomDuctPlugin.Properties.Resources.Screenshot_2024_12_23_110809;
             this.pictureBox_Stiffner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.structuresExtender.SetBindPropertyName(this.pictureBox_Stiffner, null);
-            this.pictureBox_Stiffner.Location = new System.Drawing.Point(152, 63);
+            this.pictureBox_Stiffner.Location = new System.Drawing.Point(20, 41);
             this.pictureBox_Stiffner.Name = "pictureBox_Stiffner";
-            this.pictureBox_Stiffner.Size = new System.Drawing.Size(543, 427);
-            this.pictureBox_Stiffner.TabIndex = 19;
+            this.pictureBox_Stiffner.Size = new System.Drawing.Size(410, 331);
+            this.pictureBox_Stiffner.TabIndex = 38;
             this.pictureBox_Stiffner.TabStop = false;
             // 
             // tabPage2
@@ -727,6 +828,8 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeName(this.tabPage2, null);
             this.structuresExtender.SetAttributeTypeName(this.tabPage2, null);
             this.structuresExtender.SetBindPropertyName(this.tabPage2, null);
+            this.tabPage2.Controls.Add(this.label_TotalVertiHeightOfShells);
+            this.tabPage2.Controls.Add(this.TotalChinmeyHightDisplay);
             this.tabPage2.Controls.Add(this.TopCapDiameter);
             this.tabPage2.Controls.Add(this.label_TopCapHight);
             this.tabPage2.Controls.Add(this.label_TopCapYoffset);
@@ -735,7 +838,6 @@ namespace BottomDuctPlugin
             this.tabPage2.Controls.Add(this.TopCapYoffset);
             this.tabPage2.Controls.Add(this.TopCapXoffset);
             this.tabPage2.Controls.Add(this.comboBox_ChimnyLayout);
-            this.tabPage2.Controls.Add(this.ChimnyPictureBox);
             this.tabPage2.Controls.Add(this.label_MaterialChinmy);
             this.tabPage2.Controls.Add(this.textBoxMtlCon);
             this.tabPage2.Controls.Add(this.textBoxFinishCon);
@@ -745,29 +847,53 @@ namespace BottomDuctPlugin
             this.tabPage2.Controls.Add(this.textBoxPltThkcon);
             this.tabPage2.Controls.Add(this.textBoxRingQtycon);
             this.tabPage2.Controls.Add(this.textBoxlengthCon);
-            this.tabPage2.Controls.Add(this.label_TotalVertiHeightofShell);
+            this.tabPage2.Controls.Add(this.label_VertiHeightofShell);
             this.tabPage2.Controls.Add(this.label_FinishChinmy);
             this.tabPage2.Controls.Add(this.label_NoofSegments);
             this.tabPage2.Controls.Add(this.label_ThkofRing);
             this.tabPage2.Controls.Add(this.label_NoofRings);
             this.tabPage2.Controls.Add(this.label_RadiusofBottomRing);
+            this.tabPage2.Controls.Add(this.ChimnyPictureBox);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(914, 600);
             this.tabPage2.TabIndex = 4;
-            this.tabPage2.Text = "Top duct open Cap";
+            this.tabPage2.Text = "Chinmey ";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label_TotalVertiHeightOfShells
+            // 
+            this.structuresExtender.SetAttributeName(this.label_TotalVertiHeightOfShells, null);
+            this.structuresExtender.SetAttributeTypeName(this.label_TotalVertiHeightOfShells, null);
+            this.label_TotalVertiHeightOfShells.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label_TotalVertiHeightOfShells, null);
+            this.label_TotalVertiHeightOfShells.Location = new System.Drawing.Point(119, 232);
+            this.label_TotalVertiHeightOfShells.Name = "label_TotalVertiHeightOfShells";
+            this.label_TotalVertiHeightOfShells.Size = new System.Drawing.Size(164, 16);
+            this.label_TotalVertiHeightOfShells.TabIndex = 75;
+            this.label_TotalVertiHeightOfShells.Text = "Total Verti.Height of Shells";
+            // 
+            // TotalChinmeyHightDisplay
+            // 
+            this.structuresExtender.SetAttributeName(this.TotalChinmeyHightDisplay, null);
+            this.structuresExtender.SetAttributeTypeName(this.TotalChinmeyHightDisplay, null);
+            this.structuresExtender.SetBindPropertyName(this.TotalChinmeyHightDisplay, null);
+            this.TotalChinmeyHightDisplay.Location = new System.Drawing.Point(297, 229);
+            this.TotalChinmeyHightDisplay.Name = "TotalChinmeyHightDisplay";
+            this.TotalChinmeyHightDisplay.ReadOnly = true;
+            this.TotalChinmeyHightDisplay.Size = new System.Drawing.Size(129, 22);
+            this.TotalChinmeyHightDisplay.TabIndex = 74;
             // 
             // TopCapDiameter
             // 
             this.structuresExtender.SetAttributeName(this.TopCapDiameter, "TopCapDiameter");
             this.structuresExtender.SetAttributeTypeName(this.TopCapDiameter, "Distance");
             this.structuresExtender.SetBindPropertyName(this.TopCapDiameter, null);
-            this.TopCapDiameter.Location = new System.Drawing.Point(304, 210);
+            this.TopCapDiameter.Location = new System.Drawing.Point(297, 142);
             this.TopCapDiameter.Name = "TopCapDiameter";
-            this.TopCapDiameter.Size = new System.Drawing.Size(100, 22);
-            this.TopCapDiameter.TabIndex = 47;
+            this.TopCapDiameter.Size = new System.Drawing.Size(129, 22);
+            this.TopCapDiameter.TabIndex = 73;
             // 
             // label_TopCapHight
             // 
@@ -775,11 +901,11 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_TopCapHight, null);
             this.label_TopCapHight.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_TopCapHight, null);
-            this.label_TopCapHight.Location = new System.Drawing.Point(252, 17);
+            this.label_TopCapHight.Location = new System.Drawing.Point(345, 16);
             this.label_TopCapHight.Name = "label_TopCapHight";
-            this.label_TopCapHight.Size = new System.Drawing.Size(88, 16);
-            this.label_TopCapHight.TabIndex = 46;
-            this.label_TopCapHight.Text = "TopCapHight";
+            this.label_TopCapHight.Size = new System.Drawing.Size(137, 16);
+            this.label_TopCapHight.TabIndex = 72;
+            this.label_TopCapHight.Text = "Stack Transition Hight";
             // 
             // label_TopCapYoffset
             // 
@@ -787,11 +913,11 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_TopCapYoffset, null);
             this.label_TopCapYoffset.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_TopCapYoffset, null);
-            this.label_TopCapYoffset.Location = new System.Drawing.Point(134, 17);
+            this.label_TopCapYoffset.Location = new System.Drawing.Point(176, 16);
             this.label_TopCapYoffset.Name = "label_TopCapYoffset";
-            this.label_TopCapYoffset.Size = new System.Drawing.Size(98, 16);
-            this.label_TopCapYoffset.TabIndex = 45;
-            this.label_TopCapYoffset.Text = "TopCapYoffset";
+            this.label_TopCapYoffset.Size = new System.Drawing.Size(145, 16);
+            this.label_TopCapYoffset.TabIndex = 71;
+            this.label_TopCapYoffset.Text = "Chinmey Center Yoffset";
             // 
             // label_TopCapXoffset
             // 
@@ -799,41 +925,41 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_TopCapXoffset, null);
             this.label_TopCapXoffset.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_TopCapXoffset, null);
-            this.label_TopCapXoffset.Location = new System.Drawing.Point(17, 17);
+            this.label_TopCapXoffset.Location = new System.Drawing.Point(11, 16);
             this.label_TopCapXoffset.Name = "label_TopCapXoffset";
-            this.label_TopCapXoffset.Size = new System.Drawing.Size(97, 16);
-            this.label_TopCapXoffset.TabIndex = 44;
-            this.label_TopCapXoffset.Text = "TopCapXoffset";
+            this.label_TopCapXoffset.Size = new System.Drawing.Size(144, 16);
+            this.label_TopCapXoffset.TabIndex = 70;
+            this.label_TopCapXoffset.Text = "Chinmey Center Xoffset";
             // 
             // textBox3
             // 
             this.structuresExtender.SetAttributeName(this.textBox3, "TopCapHight");
             this.structuresExtender.SetAttributeTypeName(this.textBox3, "Distance");
             this.structuresExtender.SetBindPropertyName(this.textBox3, null);
-            this.textBox3.Location = new System.Drawing.Point(255, 36);
+            this.textBox3.Location = new System.Drawing.Point(348, 35);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 22);
-            this.textBox3.TabIndex = 43;
+            this.textBox3.TabIndex = 69;
             // 
             // TopCapYoffset
             // 
             this.structuresExtender.SetAttributeName(this.TopCapYoffset, "TopCapYoffset");
             this.structuresExtender.SetAttributeTypeName(this.TopCapYoffset, "Distance");
             this.structuresExtender.SetBindPropertyName(this.TopCapYoffset, null);
-            this.TopCapYoffset.Location = new System.Drawing.Point(137, 36);
+            this.TopCapYoffset.Location = new System.Drawing.Point(179, 35);
             this.TopCapYoffset.Name = "TopCapYoffset";
             this.TopCapYoffset.Size = new System.Drawing.Size(100, 22);
-            this.TopCapYoffset.TabIndex = 42;
+            this.TopCapYoffset.TabIndex = 68;
             // 
             // TopCapXoffset
             // 
             this.structuresExtender.SetAttributeName(this.TopCapXoffset, "TopCapXoffset");
             this.structuresExtender.SetAttributeTypeName(this.TopCapXoffset, "Distance");
             this.structuresExtender.SetBindPropertyName(this.TopCapXoffset, null);
-            this.TopCapXoffset.Location = new System.Drawing.Point(20, 36);
+            this.TopCapXoffset.Location = new System.Drawing.Point(14, 35);
             this.TopCapXoffset.Name = "TopCapXoffset";
             this.TopCapXoffset.Size = new System.Drawing.Size(100, 22);
-            this.TopCapXoffset.TabIndex = 41;
+            this.TopCapXoffset.TabIndex = 67;
             // 
             // comboBox_ChimnyLayout
             // 
@@ -841,24 +967,11 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.comboBox_ChimnyLayout, "Integer");
             this.structuresExtender.SetBindPropertyName(this.comboBox_ChimnyLayout, null);
             this.comboBox_ChimnyLayout.FormattingEnabled = true;
-            this.comboBox_ChimnyLayout.Location = new System.Drawing.Point(445, 109);
+            this.comboBox_ChimnyLayout.Location = new System.Drawing.Point(554, 458);
             this.comboBox_ChimnyLayout.Name = "comboBox_ChimnyLayout";
             this.comboBox_ChimnyLayout.Size = new System.Drawing.Size(121, 24);
-            this.comboBox_ChimnyLayout.TabIndex = 40;
-            this.comboBox_ChimnyLayout.SelectedIndexChanged += new System.EventHandler(this.comboBox_ChimnyLayout_SelectedIndexChanged);
-            // 
-            // ChimnyPictureBox
-            // 
-            this.structuresExtender.SetAttributeName(this.ChimnyPictureBox, null);
-            this.structuresExtender.SetAttributeTypeName(this.ChimnyPictureBox, null);
-            this.ChimnyPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.structuresExtender.SetBindPropertyName(this.ChimnyPictureBox, null);
-            this.ChimnyPictureBox.Location = new System.Drawing.Point(445, 166);
-            this.ChimnyPictureBox.Name = "ChimnyPictureBox";
-            this.ChimnyPictureBox.Size = new System.Drawing.Size(306, 326);
-            this.ChimnyPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.ChimnyPictureBox.TabIndex = 39;
-            this.ChimnyPictureBox.TabStop = false;
+            this.comboBox_ChimnyLayout.TabIndex = 66;
+            this.comboBox_ChimnyLayout.SelectedIndexChanged += new System.EventHandler(this.comboBox_ChimnyLayout_SelectedIndexChanged_1);
             // 
             // label_MaterialChinmy
             // 
@@ -866,10 +979,10 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_MaterialChinmy, null);
             this.label_MaterialChinmy.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_MaterialChinmy, null);
-            this.label_MaterialChinmy.Location = new System.Drawing.Point(126, 488);
+            this.label_MaterialChinmy.Location = new System.Drawing.Point(119, 461);
             this.label_MaterialChinmy.Name = "label_MaterialChinmy";
             this.label_MaterialChinmy.Size = new System.Drawing.Size(58, 16);
-            this.label_MaterialChinmy.TabIndex = 38;
+            this.label_MaterialChinmy.TabIndex = 64;
             this.label_MaterialChinmy.Text = " Material";
             // 
             // textBoxMtlCon
@@ -877,30 +990,30 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeName(this.textBoxMtlCon, "MtlCon");
             this.structuresExtender.SetAttributeTypeName(this.textBoxMtlCon, "String");
             this.structuresExtender.SetBindPropertyName(this.textBoxMtlCon, null);
-            this.textBoxMtlCon.Location = new System.Drawing.Point(304, 485);
+            this.textBoxMtlCon.Location = new System.Drawing.Point(297, 458);
             this.textBoxMtlCon.Name = "textBoxMtlCon";
-            this.textBoxMtlCon.Size = new System.Drawing.Size(100, 22);
-            this.textBoxMtlCon.TabIndex = 37;
+            this.textBoxMtlCon.Size = new System.Drawing.Size(129, 22);
+            this.textBoxMtlCon.TabIndex = 63;
             // 
             // textBoxFinishCon
             // 
             this.structuresExtender.SetAttributeName(this.textBoxFinishCon, "FnCon");
             this.structuresExtender.SetAttributeTypeName(this.textBoxFinishCon, "String");
             this.structuresExtender.SetBindPropertyName(this.textBoxFinishCon, null);
-            this.textBoxFinishCon.Location = new System.Drawing.Point(304, 435);
+            this.textBoxFinishCon.Location = new System.Drawing.Point(297, 408);
             this.textBoxFinishCon.Name = "textBoxFinishCon";
-            this.textBoxFinishCon.Size = new System.Drawing.Size(100, 22);
-            this.textBoxFinishCon.TabIndex = 36;
+            this.textBoxFinishCon.Size = new System.Drawing.Size(129, 22);
+            this.textBoxFinishCon.TabIndex = 62;
             // 
             // textBoxTopRadiusChinmy
             // 
             this.structuresExtender.SetAttributeName(this.textBoxTopRadiusChinmy, "TpRadC");
             this.structuresExtender.SetAttributeTypeName(this.textBoxTopRadiusChinmy, "Distance");
             this.structuresExtender.SetBindPropertyName(this.textBoxTopRadiusChinmy, null);
-            this.textBoxTopRadiusChinmy.Location = new System.Drawing.Point(304, 166);
+            this.textBoxTopRadiusChinmy.Location = new System.Drawing.Point(297, 98);
             this.textBoxTopRadiusChinmy.Name = "textBoxTopRadiusChinmy";
-            this.textBoxTopRadiusChinmy.Size = new System.Drawing.Size(100, 22);
-            this.textBoxTopRadiusChinmy.TabIndex = 35;
+            this.textBoxTopRadiusChinmy.Size = new System.Drawing.Size(129, 22);
+            this.textBoxTopRadiusChinmy.TabIndex = 61;
             // 
             // label_RadiusofTopRing
             // 
@@ -908,63 +1021,63 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_RadiusofTopRing, null);
             this.label_RadiusofTopRing.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_RadiusofTopRing, null);
-            this.label_RadiusofTopRing.Location = new System.Drawing.Point(126, 169);
+            this.label_RadiusofTopRing.Location = new System.Drawing.Point(119, 101);
             this.label_RadiusofTopRing.Name = "label_RadiusofTopRing";
-            this.label_RadiusofTopRing.Size = new System.Drawing.Size(135, 16);
-            this.label_RadiusofTopRing.TabIndex = 34;
-            this.label_RadiusofTopRing.Text = "Diameter of Top Ring";
+            this.label_RadiusofTopRing.Size = new System.Drawing.Size(121, 16);
+            this.label_RadiusofTopRing.TabIndex = 60;
+            this.label_RadiusofTopRing.Text = "Top Ring Diameter";
             // 
             // textBoxsegmentcon
             // 
             this.structuresExtender.SetAttributeName(this.textBoxsegmentcon, "SegCon");
             this.structuresExtender.SetAttributeTypeName(this.textBoxsegmentcon, "Integer");
             this.structuresExtender.SetBindPropertyName(this.textBoxsegmentcon, null);
-            this.textBoxsegmentcon.Location = new System.Drawing.Point(304, 394);
+            this.textBoxsegmentcon.Location = new System.Drawing.Point(297, 367);
             this.textBoxsegmentcon.Name = "textBoxsegmentcon";
-            this.textBoxsegmentcon.Size = new System.Drawing.Size(100, 22);
-            this.textBoxsegmentcon.TabIndex = 33;
+            this.textBoxsegmentcon.Size = new System.Drawing.Size(129, 22);
+            this.textBoxsegmentcon.TabIndex = 59;
             // 
             // textBoxPltThkcon
             // 
             this.structuresExtender.SetAttributeName(this.textBoxPltThkcon, "PltThkCon");
             this.structuresExtender.SetAttributeTypeName(this.textBoxPltThkcon, "Distance");
             this.structuresExtender.SetBindPropertyName(this.textBoxPltThkcon, null);
-            this.textBoxPltThkcon.Location = new System.Drawing.Point(304, 346);
+            this.textBoxPltThkcon.Location = new System.Drawing.Point(297, 319);
             this.textBoxPltThkcon.Name = "textBoxPltThkcon";
-            this.textBoxPltThkcon.Size = new System.Drawing.Size(100, 22);
-            this.textBoxPltThkcon.TabIndex = 32;
+            this.textBoxPltThkcon.Size = new System.Drawing.Size(129, 22);
+            this.textBoxPltThkcon.TabIndex = 58;
             // 
             // textBoxRingQtycon
             // 
             this.structuresExtender.SetAttributeName(this.textBoxRingQtycon, "QtyCon");
             this.structuresExtender.SetAttributeTypeName(this.textBoxRingQtycon, "Integer");
             this.structuresExtender.SetBindPropertyName(this.textBoxRingQtycon, null);
-            this.textBoxRingQtycon.Location = new System.Drawing.Point(304, 302);
+            this.textBoxRingQtycon.Location = new System.Drawing.Point(297, 277);
             this.textBoxRingQtycon.Name = "textBoxRingQtycon";
-            this.textBoxRingQtycon.Size = new System.Drawing.Size(100, 22);
-            this.textBoxRingQtycon.TabIndex = 31;
+            this.textBoxRingQtycon.Size = new System.Drawing.Size(129, 22);
+            this.textBoxRingQtycon.TabIndex = 57;
             // 
             // textBoxlengthCon
             // 
             this.structuresExtender.SetAttributeName(this.textBoxlengthCon, "LenShell");
-            this.structuresExtender.SetAttributeTypeName(this.textBoxlengthCon, "Distance");
+            this.structuresExtender.SetAttributeTypeName(this.textBoxlengthCon, "DistanceList");
             this.structuresExtender.SetBindPropertyName(this.textBoxlengthCon, null);
-            this.textBoxlengthCon.Location = new System.Drawing.Point(304, 251);
+            this.textBoxlengthCon.Location = new System.Drawing.Point(297, 183);
             this.textBoxlengthCon.Name = "textBoxlengthCon";
-            this.textBoxlengthCon.Size = new System.Drawing.Size(100, 22);
-            this.textBoxlengthCon.TabIndex = 30;
+            this.textBoxlengthCon.Size = new System.Drawing.Size(129, 22);
+            this.textBoxlengthCon.TabIndex = 56;
             // 
-            // label_TotalVertiHeightofShell
+            // label_VertiHeightofShell
             // 
-            this.structuresExtender.SetAttributeName(this.label_TotalVertiHeightofShell, null);
-            this.structuresExtender.SetAttributeTypeName(this.label_TotalVertiHeightofShell, null);
-            this.label_TotalVertiHeightofShell.AutoSize = true;
-            this.structuresExtender.SetBindPropertyName(this.label_TotalVertiHeightofShell, null);
-            this.label_TotalVertiHeightofShell.Location = new System.Drawing.Point(126, 257);
-            this.label_TotalVertiHeightofShell.Name = "label_TotalVertiHeightofShell";
-            this.label_TotalVertiHeightofShell.Size = new System.Drawing.Size(157, 16);
-            this.label_TotalVertiHeightofShell.TabIndex = 23;
-            this.label_TotalVertiHeightofShell.Text = "Total Verti.Height of Shell";
+            this.structuresExtender.SetAttributeName(this.label_VertiHeightofShell, null);
+            this.structuresExtender.SetAttributeTypeName(this.label_VertiHeightofShell, null);
+            this.label_VertiHeightofShell.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label_VertiHeightofShell, null);
+            this.label_VertiHeightofShell.Location = new System.Drawing.Point(119, 189);
+            this.label_VertiHeightofShell.Name = "label_VertiHeightofShell";
+            this.label_VertiHeightofShell.Size = new System.Drawing.Size(130, 16);
+            this.label_VertiHeightofShell.TabIndex = 50;
+            this.label_VertiHeightofShell.Text = "Verti.Height of Shells";
             // 
             // label_FinishChinmy
             // 
@@ -972,10 +1085,10 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_FinishChinmy, null);
             this.label_FinishChinmy.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_FinishChinmy, null);
-            this.label_FinishChinmy.Location = new System.Drawing.Point(126, 438);
+            this.label_FinishChinmy.Location = new System.Drawing.Point(119, 411);
             this.label_FinishChinmy.Name = "label_FinishChinmy";
             this.label_FinishChinmy.Size = new System.Drawing.Size(42, 16);
-            this.label_FinishChinmy.TabIndex = 25;
+            this.label_FinishChinmy.TabIndex = 52;
             this.label_FinishChinmy.Text = "Finish";
             // 
             // label_NoofSegments
@@ -984,10 +1097,10 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_NoofSegments, null);
             this.label_NoofSegments.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_NoofSegments, null);
-            this.label_NoofSegments.Location = new System.Drawing.Point(126, 397);
+            this.label_NoofSegments.Location = new System.Drawing.Point(119, 370);
             this.label_NoofSegments.Name = "label_NoofSegments";
             this.label_NoofSegments.Size = new System.Drawing.Size(106, 16);
-            this.label_NoofSegments.TabIndex = 24;
+            this.label_NoofSegments.TabIndex = 51;
             this.label_NoofSegments.Text = "No. of Segments";
             // 
             // label_ThkofRing
@@ -996,12 +1109,11 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_ThkofRing, null);
             this.label_ThkofRing.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_ThkofRing, null);
-            this.label_ThkofRing.Location = new System.Drawing.Point(126, 349);
+            this.label_ThkofRing.Location = new System.Drawing.Point(119, 322);
             this.label_ThkofRing.Name = "label_ThkofRing";
-            this.label_ThkofRing.Size = new System.Drawing.Size(75, 16);
-            this.label_ThkofRing.TabIndex = 26;
-            this.label_ThkofRing.Text = "Thk of Ring";
-            this.label_ThkofRing.Click += new System.EventHandler(this.label_ThkofRing_Click);
+            this.label_ThkofRing.Size = new System.Drawing.Size(114, 16);
+            this.label_ThkofRing.TabIndex = 53;
+            this.label_ThkofRing.Text = "Thickness of Ring";
             // 
             // label_NoofRings
             // 
@@ -1009,10 +1121,10 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_NoofRings, null);
             this.label_NoofRings.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_NoofRings, null);
-            this.label_NoofRings.Location = new System.Drawing.Point(126, 302);
+            this.label_NoofRings.Location = new System.Drawing.Point(119, 277);
             this.label_NoofRings.Name = "label_NoofRings";
             this.label_NoofRings.Size = new System.Drawing.Size(80, 16);
-            this.label_NoofRings.TabIndex = 27;
+            this.label_NoofRings.TabIndex = 54;
             this.label_NoofRings.Text = "No. of Rings";
             // 
             // label_RadiusofBottomRing
@@ -1021,11 +1133,242 @@ namespace BottomDuctPlugin
             this.structuresExtender.SetAttributeTypeName(this.label_RadiusofBottomRing, null);
             this.label_RadiusofBottomRing.AutoSize = true;
             this.structuresExtender.SetBindPropertyName(this.label_RadiusofBottomRing, null);
-            this.label_RadiusofBottomRing.Location = new System.Drawing.Point(126, 210);
+            this.label_RadiusofBottomRing.Location = new System.Drawing.Point(119, 142);
             this.label_RadiusofBottomRing.Name = "label_RadiusofBottomRing";
-            this.label_RadiusofBottomRing.Size = new System.Drawing.Size(152, 16);
-            this.label_RadiusofBottomRing.TabIndex = 28;
-            this.label_RadiusofBottomRing.Text = "Diameter of Bottom Ring";
+            this.label_RadiusofBottomRing.Size = new System.Drawing.Size(138, 16);
+            this.label_RadiusofBottomRing.TabIndex = 55;
+            this.label_RadiusofBottomRing.Text = "Bottom Ring Diameter";
+            // 
+            // ChimnyPictureBox
+            // 
+            this.structuresExtender.SetAttributeName(this.ChimnyPictureBox, null);
+            this.structuresExtender.SetAttributeTypeName(this.ChimnyPictureBox, null);
+            this.ChimnyPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.structuresExtender.SetBindPropertyName(this.ChimnyPictureBox, null);
+            this.ChimnyPictureBox.Location = new System.Drawing.Point(469, 113);
+            this.ChimnyPictureBox.Name = "ChimnyPictureBox";
+            this.ChimnyPictureBox.Size = new System.Drawing.Size(306, 326);
+            this.ChimnyPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.ChimnyPictureBox.TabIndex = 65;
+            this.ChimnyPictureBox.TabStop = false;
+            // 
+            // tabPage3
+            // 
+            this.structuresExtender.SetAttributeName(this.tabPage3, null);
+            this.structuresExtender.SetAttributeTypeName(this.tabPage3, null);
+            this.structuresExtender.SetBindPropertyName(this.tabPage3, null);
+            this.tabPage3.Controls.Add(this.label_dontWantInsolation);
+            this.tabPage3.Controls.Add(this.textBox_dontWantInsolation);
+            this.tabPage3.Controls.Add(this.label_StudDiameter);
+            this.tabPage3.Controls.Add(this.StudDiameter);
+            this.tabPage3.Controls.Add(this.label_PlateMaterial);
+            this.tabPage3.Controls.Add(this.PlateMaterial);
+            this.tabPage3.Controls.Add(this.label_StudMaterial);
+            this.tabPage3.Controls.Add(this.StudMaterial);
+            this.tabPage3.Controls.Add(this.label_InnerPlateThickness);
+            this.tabPage3.Controls.Add(this.InnerPlateThickness);
+            this.tabPage3.Controls.Add(this.label_StudLength);
+            this.tabPage3.Controls.Add(this.StudLength);
+            this.tabPage3.Controls.Add(this.label_VirtialDistanceStuds);
+            this.tabPage3.Controls.Add(this.VirtialDistancebetwStuds);
+            this.tabPage3.Controls.Add(this.label_NoOfStuds);
+            this.tabPage3.Controls.Add(this.NoOfStuds);
+            this.tabPage3.Controls.Add(this.pictureBox_insolution);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(914, 600);
+            this.tabPage3.TabIndex = 5;
+            this.tabPage3.Text = "Insolation for Chinmy";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label_dontWantInsolation
+            // 
+            this.structuresExtender.SetAttributeName(this.label_dontWantInsolation, null);
+            this.structuresExtender.SetAttributeTypeName(this.label_dontWantInsolation, null);
+            this.label_dontWantInsolation.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label_dontWantInsolation, null);
+            this.label_dontWantInsolation.Location = new System.Drawing.Point(137, 456);
+            this.label_dontWantInsolation.Name = "label_dontWantInsolation";
+            this.label_dontWantInsolation.Size = new System.Drawing.Size(175, 16);
+            this.label_dontWantInsolation.TabIndex = 33;
+            this.label_dontWantInsolation.Text = "Remove Insolation on shells";
+            // 
+            // textBox_dontWantInsolation
+            // 
+            this.structuresExtender.SetAttributeName(this.textBox_dontWantInsolation, "DontWantInsolation");
+            this.structuresExtender.SetAttributeTypeName(this.textBox_dontWantInsolation, "String");
+            this.structuresExtender.SetBindPropertyName(this.textBox_dontWantInsolation, null);
+            this.textBox_dontWantInsolation.Location = new System.Drawing.Point(318, 453);
+            this.textBox_dontWantInsolation.Name = "textBox_dontWantInsolation";
+            this.textBox_dontWantInsolation.Size = new System.Drawing.Size(126, 22);
+            this.textBox_dontWantInsolation.TabIndex = 32;
+            // 
+            // label_StudDiameter
+            // 
+            this.structuresExtender.SetAttributeName(this.label_StudDiameter, null);
+            this.structuresExtender.SetAttributeTypeName(this.label_StudDiameter, null);
+            this.label_StudDiameter.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label_StudDiameter, null);
+            this.label_StudDiameter.Location = new System.Drawing.Point(137, 113);
+            this.label_StudDiameter.Name = "label_StudDiameter";
+            this.label_StudDiameter.Size = new System.Drawing.Size(92, 16);
+            this.label_StudDiameter.TabIndex = 30;
+            this.label_StudDiameter.Text = "Stud Diameter";
+            // 
+            // StudDiameter
+            // 
+            this.structuresExtender.SetAttributeName(this.StudDiameter, "StudDiameter");
+            this.structuresExtender.SetAttributeTypeName(this.StudDiameter, "Distance");
+            this.structuresExtender.SetBindPropertyName(this.StudDiameter, null);
+            this.StudDiameter.Location = new System.Drawing.Point(318, 113);
+            this.StudDiameter.Name = "StudDiameter";
+            this.StudDiameter.Size = new System.Drawing.Size(126, 22);
+            this.StudDiameter.TabIndex = 29;
+            // 
+            // label_PlateMaterial
+            // 
+            this.structuresExtender.SetAttributeName(this.label_PlateMaterial, null);
+            this.structuresExtender.SetAttributeTypeName(this.label_PlateMaterial, null);
+            this.label_PlateMaterial.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label_PlateMaterial, null);
+            this.label_PlateMaterial.Location = new System.Drawing.Point(137, 402);
+            this.label_PlateMaterial.Name = "label_PlateMaterial";
+            this.label_PlateMaterial.Size = new System.Drawing.Size(89, 16);
+            this.label_PlateMaterial.TabIndex = 28;
+            this.label_PlateMaterial.Text = "Plate Material";
+            // 
+            // PlateMaterial
+            // 
+            this.structuresExtender.SetAttributeName(this.PlateMaterial, "PlateMaterial");
+            this.structuresExtender.SetAttributeTypeName(this.PlateMaterial, "String");
+            this.structuresExtender.SetBindPropertyName(this.PlateMaterial, null);
+            this.PlateMaterial.Location = new System.Drawing.Point(318, 399);
+            this.PlateMaterial.Name = "PlateMaterial";
+            this.PlateMaterial.Size = new System.Drawing.Size(126, 22);
+            this.PlateMaterial.TabIndex = 27;
+            // 
+            // label_StudMaterial
+            // 
+            this.structuresExtender.SetAttributeName(this.label_StudMaterial, null);
+            this.structuresExtender.SetAttributeTypeName(this.label_StudMaterial, null);
+            this.label_StudMaterial.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label_StudMaterial, null);
+            this.label_StudMaterial.Location = new System.Drawing.Point(137, 351);
+            this.label_StudMaterial.Name = "label_StudMaterial";
+            this.label_StudMaterial.Size = new System.Drawing.Size(85, 16);
+            this.label_StudMaterial.TabIndex = 26;
+            this.label_StudMaterial.Text = "Stud Material";
+            // 
+            // StudMaterial
+            // 
+            this.structuresExtender.SetAttributeName(this.StudMaterial, "StudMaterial");
+            this.structuresExtender.SetAttributeTypeName(this.StudMaterial, "String");
+            this.structuresExtender.SetBindPropertyName(this.StudMaterial, null);
+            this.StudMaterial.Location = new System.Drawing.Point(318, 348);
+            this.StudMaterial.Name = "StudMaterial";
+            this.StudMaterial.Size = new System.Drawing.Size(126, 22);
+            this.StudMaterial.TabIndex = 25;
+            // 
+            // label_InnerPlateThickness
+            // 
+            this.structuresExtender.SetAttributeName(this.label_InnerPlateThickness, null);
+            this.structuresExtender.SetAttributeTypeName(this.label_InnerPlateThickness, null);
+            this.label_InnerPlateThickness.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label_InnerPlateThickness, null);
+            this.label_InnerPlateThickness.Location = new System.Drawing.Point(137, 302);
+            this.label_InnerPlateThickness.Name = "label_InnerPlateThickness";
+            this.label_InnerPlateThickness.Size = new System.Drawing.Size(135, 16);
+            this.label_InnerPlateThickness.TabIndex = 24;
+            this.label_InnerPlateThickness.Text = "Inner Plate Thickness";
+            // 
+            // InnerPlateThickness
+            // 
+            this.structuresExtender.SetAttributeName(this.InnerPlateThickness, "InnerPlateThickness");
+            this.structuresExtender.SetAttributeTypeName(this.InnerPlateThickness, "Distance");
+            this.structuresExtender.SetBindPropertyName(this.InnerPlateThickness, null);
+            this.InnerPlateThickness.Location = new System.Drawing.Point(318, 299);
+            this.InnerPlateThickness.Name = "InnerPlateThickness";
+            this.InnerPlateThickness.Size = new System.Drawing.Size(126, 22);
+            this.InnerPlateThickness.TabIndex = 23;
+            // 
+            // label_StudLength
+            // 
+            this.structuresExtender.SetAttributeName(this.label_StudLength, null);
+            this.structuresExtender.SetAttributeTypeName(this.label_StudLength, null);
+            this.label_StudLength.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label_StudLength, null);
+            this.label_StudLength.Location = new System.Drawing.Point(137, 261);
+            this.label_StudLength.Name = "label_StudLength";
+            this.label_StudLength.Size = new System.Drawing.Size(77, 16);
+            this.label_StudLength.TabIndex = 22;
+            this.label_StudLength.Text = "Stud Length";
+            // 
+            // StudLength
+            // 
+            this.structuresExtender.SetAttributeName(this.StudLength, "StudLength");
+            this.structuresExtender.SetAttributeTypeName(this.StudLength, "Distance");
+            this.structuresExtender.SetBindPropertyName(this.StudLength, null);
+            this.StudLength.Location = new System.Drawing.Point(318, 258);
+            this.StudLength.Name = "StudLength";
+            this.StudLength.Size = new System.Drawing.Size(126, 22);
+            this.StudLength.TabIndex = 21;
+            // 
+            // label_VirtialDistanceStuds
+            // 
+            this.structuresExtender.SetAttributeName(this.label_VirtialDistanceStuds, null);
+            this.structuresExtender.SetAttributeTypeName(this.label_VirtialDistanceStuds, null);
+            this.label_VirtialDistanceStuds.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label_VirtialDistanceStuds, null);
+            this.label_VirtialDistanceStuds.Location = new System.Drawing.Point(137, 210);
+            this.label_VirtialDistanceStuds.Name = "label_VirtialDistanceStuds";
+            this.label_VirtialDistanceStuds.Size = new System.Drawing.Size(135, 16);
+            this.label_VirtialDistanceStuds.TabIndex = 20;
+            this.label_VirtialDistanceStuds.Text = "Vertical Stud Spacing";
+            // 
+            // VirtialDistancebetwStuds
+            // 
+            this.structuresExtender.SetAttributeName(this.VirtialDistancebetwStuds, "VirtDisbetwStuds");
+            this.structuresExtender.SetAttributeTypeName(this.VirtialDistancebetwStuds, "Distance");
+            this.structuresExtender.SetBindPropertyName(this.VirtialDistancebetwStuds, null);
+            this.VirtialDistancebetwStuds.Location = new System.Drawing.Point(318, 207);
+            this.VirtialDistancebetwStuds.Name = "VirtialDistancebetwStuds";
+            this.VirtialDistancebetwStuds.Size = new System.Drawing.Size(126, 22);
+            this.VirtialDistancebetwStuds.TabIndex = 19;
+            // 
+            // label_NoOfStuds
+            // 
+            this.structuresExtender.SetAttributeName(this.label_NoOfStuds, null);
+            this.structuresExtender.SetAttributeTypeName(this.label_NoOfStuds, null);
+            this.label_NoOfStuds.AutoSize = true;
+            this.structuresExtender.SetBindPropertyName(this.label_NoOfStuds, null);
+            this.label_NoOfStuds.Location = new System.Drawing.Point(137, 160);
+            this.label_NoOfStuds.Name = "label_NoOfStuds";
+            this.label_NoOfStuds.Size = new System.Drawing.Size(133, 16);
+            this.label_NoOfStuds.TabIndex = 18;
+            this.label_NoOfStuds.Text = "No. of Studs in a Row";
+            // 
+            // NoOfStuds
+            // 
+            this.structuresExtender.SetAttributeName(this.NoOfStuds, "NoOfStuds");
+            this.structuresExtender.SetAttributeTypeName(this.NoOfStuds, "Integer");
+            this.structuresExtender.SetBindPropertyName(this.NoOfStuds, null);
+            this.NoOfStuds.Location = new System.Drawing.Point(318, 157);
+            this.NoOfStuds.Name = "NoOfStuds";
+            this.NoOfStuds.Size = new System.Drawing.Size(126, 22);
+            this.NoOfStuds.TabIndex = 17;
+            // 
+            // pictureBox_insolution
+            // 
+            this.structuresExtender.SetAttributeName(this.pictureBox_insolution, null);
+            this.structuresExtender.SetAttributeTypeName(this.pictureBox_insolution, null);
+            this.pictureBox_insolution.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox_insolution.BackgroundImage")));
+            this.pictureBox_insolution.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.structuresExtender.SetBindPropertyName(this.pictureBox_insolution, null);
+            this.pictureBox_insolution.Location = new System.Drawing.Point(498, 48);
+            this.pictureBox_insolution.Name = "pictureBox_insolution";
+            this.pictureBox_insolution.Size = new System.Drawing.Size(279, 504);
+            this.pictureBox_insolution.TabIndex = 31;
+            this.pictureBox_insolution.TabStop = false;
             // 
             // okApplyModifyGetOnOffCancel1
             // 
@@ -1076,7 +1419,7 @@ namespace BottomDuctPlugin
             this.imageList1.Images.SetKeyName(0, "Ring.png");
             this.imageList1.Images.SetKeyName(1, "conical.png");
             // 
-            // MainForm
+            // StackShellDuctForm
             // 
             this.structuresExtender.SetAttributeName(this, null);
             this.structuresExtender.SetAttributeTypeName(this, null);
@@ -1087,7 +1430,7 @@ namespace BottomDuctPlugin
             this.Controls.Add(this.tableLayoutPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "MainForm";
+            this.Name = "StackShellDuctForm";
             this.Text = "Model Plug-in";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabControl.ResumeLayout(false);
@@ -1096,10 +1439,14 @@ namespace BottomDuctPlugin
             ((System.ComponentModel.ISupportInitialize)(this.BottomDuct_PictureBox)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_chinmeyStiffners)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Stiffner)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChimnyPictureBox)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_insolution)).EndInit();
             this.tableLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1145,6 +1492,58 @@ namespace BottomDuctPlugin
         private System.Windows.Forms.TextBox TopDuctWidth;
         private System.Windows.Forms.PictureBox BottomDuct_PictureBox;
         private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Label label_TotalVertiHeightOfShells;
+        internal System.Windows.Forms.TextBox TotalChinmeyHightDisplay;
+        private System.Windows.Forms.TextBox TopCapDiameter;
+        private System.Windows.Forms.Label label_TopCapHight;
+        private System.Windows.Forms.Label label_TopCapYoffset;
+        private System.Windows.Forms.Label label_TopCapXoffset;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox TopCapYoffset;
+        private System.Windows.Forms.TextBox TopCapXoffset;
+        private System.Windows.Forms.ComboBox comboBox_ChimnyLayout;
+        private System.Windows.Forms.Label label_MaterialChinmy;
+        private System.Windows.Forms.TextBox textBoxMtlCon;
+        private System.Windows.Forms.TextBox textBoxFinishCon;
+        private System.Windows.Forms.TextBox textBoxTopRadiusChinmy;
+        private System.Windows.Forms.Label label_RadiusofTopRing;
+        private System.Windows.Forms.TextBox textBoxsegmentcon;
+        private System.Windows.Forms.TextBox textBoxPltThkcon;
+        private System.Windows.Forms.TextBox textBoxRingQtycon;
+        private System.Windows.Forms.TextBox textBoxlengthCon;
+        private System.Windows.Forms.Label label_VertiHeightofShell;
+        private System.Windows.Forms.Label label_FinishChinmy;
+        private System.Windows.Forms.Label label_NoofSegments;
+        private System.Windows.Forms.Label label_ThkofRing;
+        private System.Windows.Forms.Label label_NoofRings;
+        private System.Windows.Forms.Label label_RadiusofBottomRing;
+        private System.Windows.Forms.PictureBox ChimnyPictureBox;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Label label_dontWantInsolation;
+        private System.Windows.Forms.TextBox textBox_dontWantInsolation;
+        private System.Windows.Forms.Label label_StudDiameter;
+        private System.Windows.Forms.TextBox StudDiameter;
+        private System.Windows.Forms.Label label_PlateMaterial;
+        private System.Windows.Forms.TextBox PlateMaterial;
+        private System.Windows.Forms.Label label_StudMaterial;
+        private System.Windows.Forms.TextBox StudMaterial;
+        private System.Windows.Forms.Label label_InnerPlateThickness;
+        private System.Windows.Forms.TextBox InnerPlateThickness;
+        private System.Windows.Forms.Label label_StudLength;
+        private System.Windows.Forms.TextBox StudLength;
+        private System.Windows.Forms.Label label_VirtialDistanceStuds;
+        private System.Windows.Forms.TextBox VirtialDistancebetwStuds;
+        private System.Windows.Forms.Label label_NoOfStuds;
+        private System.Windows.Forms.TextBox NoOfStuds;
+        private System.Windows.Forms.PictureBox pictureBox_insolution;
+        private System.Windows.Forms.TextBox textBox_ChinmyStiffVerti;
+        private System.Windows.Forms.Label label_ChinmyStiffProfile;
+        private System.Windows.Forms.TextBox textBox_ChinmyStiffProfile;
+        private System.Windows.Forms.Label label_ChinmeyStiffMaterial;
+        private System.Windows.Forms.TextBox textBox_ChinmeyStiffMaterial;
         private System.Windows.Forms.Label label_Profile;
         private System.Windows.Forms.TextBox Profile;
         private System.Windows.Forms.Label label_Material;
@@ -1157,33 +1556,7 @@ namespace BottomDuctPlugin
         private System.Windows.Forms.TextBox CenterStiffnerRightOffset;
         private System.Windows.Forms.TextBox CenterStiffnerLeftOffset;
         private System.Windows.Forms.TextBox LeftStiffnerOffset;
+        private System.Windows.Forms.PictureBox pictureBox_chinmeyStiffners;
         private System.Windows.Forms.PictureBox pictureBox_Stiffner;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.PictureBox ChimnyPictureBox;
-        private System.Windows.Forms.Label label_MaterialChinmy;
-        private System.Windows.Forms.TextBox textBoxMtlCon;
-        private System.Windows.Forms.TextBox textBoxFinishCon;
-        private System.Windows.Forms.TextBox textBoxTopRadiusChinmy;
-        private System.Windows.Forms.Label label_RadiusofTopRing;
-        private System.Windows.Forms.TextBox textBoxsegmentcon;
-        private System.Windows.Forms.TextBox textBoxPltThkcon;
-        private System.Windows.Forms.TextBox textBoxRingQtycon;
-        private System.Windows.Forms.TextBox textBoxlengthCon;
-        private System.Windows.Forms.Label label_TotalVertiHeightofShell;
-        private System.Windows.Forms.Label label_FinishChinmy;
-        private System.Windows.Forms.Label label_NoofSegments;
-        private System.Windows.Forms.Label label_ThkofRing;
-        private System.Windows.Forms.Label label_NoofRings;
-        private System.Windows.Forms.Label label_RadiusofBottomRing;
-        private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.ComboBox comboBox_ChimnyLayout;
-        private System.Windows.Forms.TextBox TopCapDiameter;
-        private System.Windows.Forms.Label label_TopCapHight;
-        private System.Windows.Forms.Label label_TopCapYoffset;
-        private System.Windows.Forms.Label label_TopCapXoffset;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox TopCapYoffset;
-        private System.Windows.Forms.TextBox TopCapXoffset;
     }
 }

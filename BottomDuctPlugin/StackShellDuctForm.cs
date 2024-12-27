@@ -2,10 +2,10 @@ using System;
 
 namespace BottomDuctPlugin
 {
-    public partial class MainForm : Tekla.Structures.Dialog.PluginFormBase
+    public partial class StackShellDuctForm : Tekla.Structures.Dialog.PluginFormBase
     {
         
-        public MainForm()
+        public StackShellDuctForm()
         {
             InitializeComponent();
         }
@@ -52,7 +52,18 @@ namespace BottomDuctPlugin
 
         }
 
-        private void comboBox_ChimnyLayout_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            comboBox_ChimnyLayout.Items.Clear();
+            comboBox_ChimnyLayout.Items.Add("Cylindrical");
+            comboBox_ChimnyLayout.Items.Add("Conical");
+            comboBox_ChimnyLayout.SelectedIndex = 0;
+
+        }
+
+
+        private void comboBox_ChimnyLayout_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             ChimnyPictureBox.BackgroundImage = imageList1.Images[comboBox_ChimnyLayout.SelectedIndex];
             if (comboBox_ChimnyLayout.SelectedIndex == 1)
@@ -69,20 +80,6 @@ namespace BottomDuctPlugin
                 label_RadiusofBottomRing.Text = "Diameter of Ring";
 
             }
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            comboBox_ChimnyLayout.Items.Clear();
-            comboBox_ChimnyLayout.Items.Add("Cylindrical");
-            comboBox_ChimnyLayout.Items.Add("Conical");
-            comboBox_ChimnyLayout.SelectedIndex = 1;
-
-        }
-
-        private void label_ThkofRing_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -271,6 +271,11 @@ namespace TeklaPH
             Point mid = new Point((point.X + point1.X) / 2, (point.Y + point1.Y) / 2, (point.Z + point1.Z) / 2);
             return mid;
         }
+        public static Point MidPoint(Tekla.Structures.Geometry3d.LineSegment line)
+        {
+            Point mid = new Point((line.StartPoint.X + line.EndPoint.X) / 2, (line.StartPoint.Y + line.EndPoint.Y) / 2, (line.StartPoint.Z + line.EndPoint.Z) / 2);
+            return mid;
+        }
         public static Point FindPointOnLine(Point startPoint, Point secondPoint, double distance)
         {
             if (distance == 0)
@@ -392,6 +397,25 @@ namespace TeklaPH
             }
             return output;
         }
+        public static List<double> DoubleListInputModifier(List<double> doubles, int noOfElements)
+        {
+            List<double> output = new List<double>();
+            double hold = 0.0;
+            for (int i = 0; i < noOfElements; i++)
+            {
+                if (output.Count >= doubles.Count)
+                {
+                    output.Add(hold);
+                }
+                else
+                {
+                    hold = doubles[i];
+                    output.Add(hold);
+                }
+            }
+            return output;
+
+        }
     }
     public class GeoPlane
     {
@@ -462,7 +486,7 @@ namespace TeklaPH
 
             return face;
         }
-        private Face_ Web_Fitting(Part beam1, Part beam2)
+        public Face_ Web_Fitting(Part beam1, Part beam2)
         {
             Faces faces = new Faces();
             Line line = new Line();
@@ -528,7 +552,7 @@ namespace TeklaPH
 
             return face;
         }
-        private void BeamBooleanCut(Part beam1, Part beam2, double clearance, double gap, double thickness)
+        public void BeamBooleanCut(Part beam1, Part beam2, double clearance, double gap, double thickness)
         {
             Faces faces = new Faces();
             Line line = new Line();
@@ -580,7 +604,7 @@ namespace TeklaPH
                 }
             }
         }
-        private void SameProfileEdgeJoint(Part part1, Part part2)
+        public static void SameProfileEdgeJoint(Part part1, Part part2)
         {
             Faces faces = new Faces();
             Line line = new Line();
