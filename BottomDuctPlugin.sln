@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BottomDuctPlugin", "BottomDuctPlugin\BottomDuctPlugin.csproj", "{E8025EC0-7007-4997-81AF-066946B16207}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StackShellDuctPlugin", "BottomDuctPlugin\StackShellDuctPlugin.csproj", "{E8025EC0-7007-4997-81AF-066946B16207}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

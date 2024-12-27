@@ -1,11 +1,12 @@
 using System;
+using System.Collections.Generic;
 
 namespace BottomDuctPlugin
 {
-    public partial class MainForm : Tekla.Structures.Dialog.PluginFormBase
+    public partial class StackShellDuctForm : Tekla.Structures.Dialog.PluginFormBase
     {
         
-        public MainForm()
+        public StackShellDuctForm()
         {
             InitializeComponent();
         }
@@ -76,13 +77,20 @@ namespace BottomDuctPlugin
             comboBox_ChimnyLayout.Items.Clear();
             comboBox_ChimnyLayout.Items.Add("Cylindrical");
             comboBox_ChimnyLayout.Items.Add("Conical");
-            comboBox_ChimnyLayout.SelectedIndex = 1;
+            comboBox_ChimnyLayout.SelectedIndex = 0;
+            
+            
 
         }
-
-        private void label_ThkofRing_Click(object sender, EventArgs e)
+        private void textBoxlengthCon_MouseLeave(object sender, EventArgs e)
         {
-
+            double total = 0.0;
+            List<double> doubles = TeklaPH.Input.InputConverter(textBoxlengthCon.Text);
+            List<double> ShellHights = TeklaPH.Input.DoubleListInputModifier(doubles, int.Parse(textBoxRingQtycon.Text));
+            foreach (double s in ShellHights) 
+                total += s;
+            TotalChinmeyHightDisplay.Clear();
+            TotalChinmeyHightDisplay.Text = total.ToString();
         }
     }
 }
